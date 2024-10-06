@@ -10,7 +10,7 @@ const InitialSectioninfo = () => {
             <TextCard white={true} textAlign="center" fontSize={11}>Bienvenido a</TextCard>
 
             <WrapperContainer2 justifyContent="center" alignItems="center" gap={5} flexDirection="column">
-                <Title white={true}>EQUILIBRIUM EGES</Title>
+                <Title>EQUILIBRIUM EGES</Title>
                 <TextCard white={true} textAlign="center">GRUPO EMPRESARIAL DE LA SALUD</TextCard>
 
             </WrapperContainer2>

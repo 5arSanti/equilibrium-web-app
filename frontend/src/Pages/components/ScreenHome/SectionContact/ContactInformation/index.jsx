@@ -1,23 +1,22 @@
 import { contactInfo } from "../../../../../utils/ContactInfo/contactInfo";
+import { IconsList } from "../../../IconsList";
 import { SubTitle } from "../../../SubTitle";
 import { SpanCard, TextCard } from "../../../TextComponents";
 import { WrapperContainer2 } from "../../../WrapperContainers";
+import { ContactCard } from "../ContactCard";
 
 const ContactInformation = () => {
     const contactKeys = Object.keys(contactInfo) || [];
 
     return (
-        <WrapperContainer2 flexDirection="column">
+        <WrapperContainer2 flexDirection="column" padding={30}>
             <SubTitle>INFORMACION DE CONTACTO</SubTitle>
 
             {contactKeys?.map((item, index) => (
-                <WrapperContainer2 key={index} flexDirection="column">
-                    <TextCard><SpanCard >{item}</SpanCard></TextCard>
-
-                    <TextCard>{contactInfo[item].icon} {contactInfo[item]?.info}</TextCard>
-
-                </WrapperContainer2>
+                <ContactCard key={index} item={item} object={contactInfo}/>
             ))}
+
+            <IconsList justifyContent="start" padding={0}/>
         </WrapperContainer2>
     );
 }
