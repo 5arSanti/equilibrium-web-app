@@ -1,0 +1,15 @@
+.news-card-container:hover img {
+    transform: scale(1.1);
+}
+
+.news-card-img {
+    width: 100%;
+}
+.news-card-img img {
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    transition: all 0.3s ease;
+}

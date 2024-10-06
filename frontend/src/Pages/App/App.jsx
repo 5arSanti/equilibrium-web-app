@@ -14,14 +14,18 @@ import { AppProvider } from "../../Context";
 //Screens
 import { Home } from "../Screens/Home";
 
-//Components
+// Components
 import { Footer } from "../components/Footer";
 import { ToastContainer } from "react-toastify";
 import { LoadingCard } from "../components/LoadingCard";
 
-//Utils
+// Utils
 import { scrollToValue } from "../../utils/scrollToValue";
 import { Header } from "../components/Header";
+
+// CSS
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Wrapper = ({children}) => {
     const location = useLocation();

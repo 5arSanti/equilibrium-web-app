@@ -82,7 +82,10 @@
     height: 25px;
 }
 
-
+.privacy-policy svg {
+    width: 20px;
+    height: 20px;
+}
 
 
 /* @media(max-width: 875px){

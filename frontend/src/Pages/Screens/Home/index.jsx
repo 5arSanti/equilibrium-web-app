@@ -9,6 +9,7 @@ import { SectionContact } from "../../components/ScreenHome/SectionContact";
 
 import "./styles.css"
 import { SectionAboutUs } from "../../components/ScreenHome/SectionAboutUs";
+import { SectionNews } from "../../components/SectionNews";
 
 const Home = () => {
     return (
@@ -25,6 +26,8 @@ const Home = () => {
             <SectionServices/>
 
             <SectionContact/>
+
+            <SectionNews/>
         </AuthWrapper>
     );
 }
