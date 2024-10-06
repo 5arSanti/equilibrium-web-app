@@ -7,7 +7,7 @@ import { WrapperContainer2 } from "../../WrapperContainers";
 const InitialSectioninfo = () => {
     return (
         <WrapperContainer2 justifyContent="center" alignItems="center" gap={5} flexDirection="column" paddingVertical={80}>
-            <TextCard white={true} textAlign="center" fontSize={11}>Bienvenido a</TextCard>
+            <TextCard white={true} textAlign="center" fontSize={16}>Bienvenido a</TextCard>
 
             <WrapperContainer2 justifyContent="center" alignItems="center" gap={5} flexDirection="column">
                 <Title>EQUILIBRIUM EGES</Title>
@@ -16,7 +16,7 @@ const InitialSectioninfo = () => {
             </WrapperContainer2>
 
             <div>
-                <TextCard white={true} textAlign="center" fontSize={12}>{contactInfo["Numero de celular"].info}</TextCard>
+                <TextCard white={true} textAlign="center" fontSize={16}>{contactInfo["Numero de celular"].info}</TextCard>
                 <IconsList padding={10} white={true}/>
             </div>
 

@@ -1,8 +1,7 @@
-import { locationImage } from "../../../../assets";
 import { GridContainer } from "../../GridContainer";
 import { SectionWrapper } from "../../SectionWrapper";
 import { SectionTitle } from "../../SectionWrapper/SectionTitle";
-import { WrapperContainer1, WrapperContainer2, WrapperContainer3 } from "../../WrapperContainers";
+import { WrapperContainer2, WrapperContainer3 } from "../../WrapperContainers";
 import { ContactInformation } from "./ContactInformation";
 
 const SectionContact = () => {
@@ -25,7 +24,6 @@ const SectionContact = () => {
                     </WrapperContainer3>
                     
                     <ContactInformation/>
-                    {/* <GoogleMapContainer/> */}
                 </GridContainer>
             </WrapperContainer2>
         </SectionWrapper>
