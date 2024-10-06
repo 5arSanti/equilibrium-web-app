@@ -21,7 +21,7 @@ const IconsList = ({white=false, flexDirection="row", padding=20}) => {
     ]
 
     return(
-        <WrapperContainer2 flexDirection={flexDirection} gap={30} className={`icons`} padding={padding}>
+        <WrapperContainer2 flexDirection={flexDirection} justifyContent="center" gap={20} className={`icons`} padding={padding}>
             {icons?.map((item, index) => (
                 <a key={index} target="_blank" rel="noopener noreferrer" href={item?.link} title={item?.name}>
                     {item?.icon}

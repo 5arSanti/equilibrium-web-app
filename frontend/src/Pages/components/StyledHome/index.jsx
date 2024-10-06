@@ -8,7 +8,7 @@ const StyledHome = ({children, image=""}) => {
                 {children}
             </div>
 
-            <img src={image} alt=""/>
+            <img src={image} alt="Alternative text"/>
         </section>
     );
 }

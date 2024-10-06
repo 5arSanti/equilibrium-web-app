@@ -1,10 +1,13 @@
 :root{
     --navbar-color: #FFFFFF;
-    --main-body-color: #EEFAFF;
-    --main-title-color: #FFFFFF;
+    --footer-color:  #becfec;
 
-    --lines-color: #681d35;
-    --lines-color2: #681d35;
+    --main-body-color: #EEFAFF;
+    --main-title-color: #becfec;
+
+    --lines-color: #85f2fa;
+    --lines-color2: #dff6ff;
+
     --text-color: #717171;
     --all-info-container-color: #E6EFFD;
     
@@ -12,7 +15,6 @@
     --white-to-black-color: #FFFFFF;
 
     --icon-colors: #DCDCDC;
-    --footer-color:  #8298b0;
 
     --navbar-height: 80px;
 
@@ -105,4 +107,16 @@ svg {
     .animacion:hover::after {
         width: 100%;
     }
+}
+
+.archivo-font {
+    font-family: "Archivo", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+svg {
+    width: 40px;
+    height: 40px;
 }
