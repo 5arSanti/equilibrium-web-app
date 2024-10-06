@@ -5,7 +5,6 @@
 
     border: 1px solid var(--lines-color2);
     border-radius: 20px;
-    overflow: hidden;
 
     display: flex;
     align-items: center;

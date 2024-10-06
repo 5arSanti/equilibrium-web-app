@@ -1,15 +1,15 @@
 import { SpanCard, TextCard } from "../../../TextComponents";
-import { WrapperContainer2 } from "../../../WrapperContainers";
+import { WrapperContainer1 } from "../../../WrapperContainers";
 
 const ContactCard = ({item={}, object={}}) => {
 
     return (
-        <WrapperContainer2 flexDirection="column" padding={5}>
-            <TextCard><SpanCard fontSize={12}>{item}</SpanCard></TextCard>
+        <WrapperContainer1 flexDirection="column" padding={20} alignItems="end">
+            <TextCard textAlign="end"><SpanCard fontSize={14}>{item}</SpanCard></TextCard>
 
-            <TextCard>{object[item].icon} {object[item]?.info}</TextCard>
+            <TextCard textAlign="end">{object[item].icon} {object[item]?.info}</TextCard>
 
-        </WrapperContainer2>
+        </WrapperContainer1>
     );
 }
 

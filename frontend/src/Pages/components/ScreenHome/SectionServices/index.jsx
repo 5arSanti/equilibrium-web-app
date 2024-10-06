@@ -1,6 +1,7 @@
 import { servicesImage } from "../../../../assets";
 import { GridContainer } from "../../GridContainer";
 import { SectionWrapper } from "../../SectionWrapper"
+import { SectionTitle } from "../../SectionWrapper/SectionTitle";
 import { Title } from "../../Title";
 import { WrapperContainer2 } from "../../WrapperContainers"
 import { ServicesContainer } from "./ServicesContainer";
@@ -9,9 +10,9 @@ import "./styles.css"
 
 const SectionServices = () => {
     return(
-        <SectionWrapper border={false}>
+        <SectionWrapper>
             <WrapperContainer2 flexDirection="column">
-                <Title>SERVICIOS</Title>
+                <SectionTitle title="SERVICIOS" subTitle="NUESTROS"/>
 
                 <GridContainer className="grid-125-075" gap={0}>
                     <ServicesContainer/>

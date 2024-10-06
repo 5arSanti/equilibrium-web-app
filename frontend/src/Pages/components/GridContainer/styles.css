@@ -46,6 +46,10 @@
     grid-template-columns: 0.75fr 0.25fr; 
 }
 
+.reverse {
+    order: -1;
+}
+
 
 @media(max-width: 1150px) {
     .all-info-grid-container {

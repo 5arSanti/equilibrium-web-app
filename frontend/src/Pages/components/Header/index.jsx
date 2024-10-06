@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { NavOptions } from "../NavOptions";
 
-import "./styles.css"
 import { mainLogo } from "../../../assets";
+
+import "./styles.css"
 
 const Header = () => {
 
     return(
         <nav className="nav-container animacion-nav">
-            <NavLink to="/" className="animacion">
+            <NavLink to="/">
                 <img src={mainLogo} alt="" />
             </NavLink>
 

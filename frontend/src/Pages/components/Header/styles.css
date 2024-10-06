@@ -27,10 +27,6 @@
     object-fit: contain;
 }
 
-.nav-container a {
-    color: var(--white);
-}
-
 .icon-responsive {
     width: 30px;
     height: 30px;
