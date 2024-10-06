@@ -1,16 +1,11 @@
 import "./styles.css"
 
-const StyledHome = ({image, icon}) => {
+const StyledHome = ({children, image=""}) => {
 
     return (
         <section className="styled-home-main-container" id="about">
             <div className="gradient-container">
-                <div className="text-container">
-                    <div> Bienvenido a <span>Equilibrium</span></div>
-                    <p>Bienestar, salud, belleza y descanso.</p>
-                </div>
-
-
+                {children}
             </div>
 
             <img src={image} alt=""/>

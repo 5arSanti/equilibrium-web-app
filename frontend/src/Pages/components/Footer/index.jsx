@@ -14,18 +14,6 @@ const Footer = () => {
                     <Link to="/">
                         <p className="animacion">Equilibrium</p>    
                     </Link>
-
-                    <Link to="/" className="footer-info-image-container">
-                        {/* <img src={logo} alt="Logo" /> */}
-                    </Link>
-
-                    <a href="mailto:santiari05@hotmail.com">
-                        <p className="animacion">
-                            santiari05@hotmail.com 
-                            <HiOutlineArrowTopRightOnSquare className="text-sm inline-block ml-2"/>
-                        </p>  
-                    </a>
-
                 </div>
             </div>
 

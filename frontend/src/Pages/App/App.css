@@ -1,7 +1,7 @@
 :root{
-    --navbar-color: #3366cc;
+    --navbar-color: #FFFFFF;
     --main-body-color: #EEFAFF;
-    --main-title-color: #681d35;
+    --main-title-color: #FFFFFF;
 
     --lines-color: #681d35;
     --lines-color2: #681d35;
@@ -12,9 +12,9 @@
     --white-to-black-color: #FFFFFF;
 
     --icon-colors: #DCDCDC;
-    --footer-color:  rgba(104, 29, 53, 1);
+    --footer-color:  #8298b0;
 
-
+    --navbar-height: 80px;
 
     --white: rgba(255,255,255,1);
     --white-025: rgba(255,255,255,.25);
@@ -39,7 +39,10 @@ p, span, div, h2, h1 {
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto" !important;
+    font-weight: 100;
+    font-style: normal;
+
     background: var(--main-body-color) !important;
 
     transition: all 0.2s ease;

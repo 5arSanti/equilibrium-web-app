@@ -1,8 +1,6 @@
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa"
-import { FaDeviantart } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
-import { FaYoutube } from "react-icons/fa";
+
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagramSquare } from "react-icons/fa";
 
 import { WrapperContainer2 } from "../WrapperContainers";
 
@@ -11,29 +9,14 @@ import "./styles.css"
 const IconsList = ({white=false, flexDirection="row", padding=20}) => {
     const icons = [
         {
-            name: "Linkedin",
-            link: "https://www.linkedin.com/in/santiago-ariasb/",
-            icon: <FaLinkedin className={white ? "white-color" : "lines-color" }/>,
+            name: "Facebook",
+            link: "https://www.facebook.com/share/LEa8SMvd6oBsiMVi/",
+            icon: <FaFacebook className={white ? "white-color" : "lines-color" }/>,
         },
         {
-            name: "GitHub",
-            link: "https://github.com/5arSanti",
-            icon: <FaGithub className={white ? "white-color" : "lines-color" }/>,
-        },
-        {
-            name: "DeviantArt",
-            link: "https://www.deviantart.com/santiari1",
-            icon: <FaDeviantart className={white ? "white-color" : "lines-color" }/>,
-        },
-        {
-            name: "X - (Antes Twitter)",
-            link: "https://twitter.com/5ar_santi",
-            icon: <BsTwitterX className={white ? "white-color" : "lines-color" }/>,
-        },
-        {
-            name: "YouTube",
-            link: "https://www.youtube.com/@5ar_santi",
-            icon: <FaYoutube className={white ? "white-color" : "lines-color"}/>,
+            name: "Instagram",
+            link: "https://www.instagram.com/equilibriumsantarosa/profilecard/?igsh=aXkxMDBheWo4Y3A3",
+            icon: <FaInstagramSquare className={white ? "white-color" : "lines-color" }/>,
         },
     ]
 

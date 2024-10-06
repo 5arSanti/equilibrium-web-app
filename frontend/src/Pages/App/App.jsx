@@ -21,6 +21,7 @@ import { LoadingCard } from "../components/LoadingCard";
 
 //Utils
 import { scrollToValue } from "../../utils/scrollToValue";
+import { Header } from "../components/Header";
 
 const Wrapper = ({children}) => {
     const location = useLocation();
@@ -48,6 +49,7 @@ const App = () => {
         <AppProvider>
             <HashRouter>
                 <Wrapper>
+                    <Header/>
                     <LoadingCard/>
 
                     <AppRoutes/>
