@@ -26,6 +26,7 @@ import { Header } from "../components/Header";
 // CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { HeaderContact } from "../components/HeaderContact";
 
 const Wrapper = ({children}) => {
     const location = useLocation();
@@ -54,6 +55,8 @@ const App = () => {
             <HashRouter>
                 <Wrapper>
                     <Header/>
+                    <HeaderContact/>
+                    
                     <LoadingCard/>
 
                     <AppRoutes/>

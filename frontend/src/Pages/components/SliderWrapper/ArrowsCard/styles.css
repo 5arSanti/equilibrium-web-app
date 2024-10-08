@@ -1,0 +1,27 @@
+.arrow-card {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    background-color: transparent !important;
+    border-radius: 100% !important;
+
+    transition: all 0.1s ease !important;
+}
+
+.arrow-card:hover {
+    background-color: var(--lines-color) !important;
+}
+.arrow-card:hover svg {
+    fill: var(--white-to-black-color) !important;
+}
+
+.arrow-card svg {
+    width: 100% !important;
+    height: 100% !important;
+    fill: var(--lines-color) !important;
+}
+
+.arrow-card::before {
+    content: "" !important;
+}

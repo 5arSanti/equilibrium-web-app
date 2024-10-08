@@ -10,6 +10,7 @@ import { SectionContact } from "../../components/ScreenHome/SectionContact";
 import "./styles.css"
 import { SectionAboutUs } from "../../components/ScreenHome/SectionAboutUs";
 import { SectionNews } from "../../components/SectionNews";
+import { SectionUsersOpinions } from "../../components/SectionUserOpinions";
 
 const Home = () => {
     return (
@@ -21,9 +22,11 @@ const Home = () => {
                 </StyledHome>
             </FadeWrapper>
 
+            <SectionServices/>
+
             <SectionAboutUs/>
 
-            <SectionServices/>
+            <SectionUsersOpinions/>
 
             <SectionContact/>
 
