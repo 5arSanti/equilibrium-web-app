@@ -1,4 +1,3 @@
-
 import "./styles.css";
 
 const Title = ({children, white=false, className=""}) => {
@@ -8,7 +7,6 @@ const Title = ({children, white=false, className=""}) => {
                 {children}
             </h1>
         </div>
-
     );
 }
 

@@ -1,0 +1,13 @@
+{
+  "name": "equilibrium",
+  "private": "true",
+  "description": "source code for equilibrium web app",
+  "devDependencies": {
+    "husky": "^9.1.6"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "back": "cd backend && npm run dev",
+    "front": "cd frontend && npm run dev"
+  }
+}
