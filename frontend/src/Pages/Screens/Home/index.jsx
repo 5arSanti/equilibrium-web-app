@@ -1,6 +1,4 @@
 import { AuthWrapper } from "../../components/AuthWrapper";
-import { StyledHome } from "../../components/StyledHome";
-import { mainHome } from "../../../assets";
 
 import { InitialSectioninfo } from "../../components/ScreenHome/InitialSectionInfo";
 import { FadeWrapper } from "../../components/FadeWrapper";
@@ -11,15 +9,16 @@ import "./styles.css"
 import { SectionAboutUs } from "../../components/ScreenHome/SectionAboutUs";
 import { SectionNews } from "../../components/SectionNews";
 import { SectionUsersOpinions } from "../../components/SectionUserOpinions";
+import { StyledSection } from "../../components/StyledSection";
 
 const Home = () => {
     return (
 
         <AuthWrapper>
             <FadeWrapper>
-                <StyledHome image={mainHome}>
+                <StyledSection>
                     <InitialSectioninfo/>
-                </StyledHome>
+                </StyledSection>
             </FadeWrapper>
 
             <SectionServices/>
