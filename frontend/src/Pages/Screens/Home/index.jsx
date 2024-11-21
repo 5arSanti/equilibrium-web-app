@@ -1,6 +1,6 @@
 import { AuthWrapper } from "../../components/AuthWrapper";
 import { StyledHome } from "../../components/StyledHome";
-import { mainHomeImg } from "../../../assets";
+import { mainHome } from "../../../assets";
 
 import { InitialSectioninfo } from "../../components/ScreenHome/InitialSectionInfo";
 import { FadeWrapper } from "../../components/FadeWrapper";
@@ -17,7 +17,7 @@ const Home = () => {
 
         <AuthWrapper>
             <FadeWrapper>
-                <StyledHome image={mainHomeImg}>
+                <StyledHome image={mainHome}>
                     <InitialSectioninfo/>
                 </StyledHome>
             </FadeWrapper>

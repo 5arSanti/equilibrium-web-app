@@ -11,6 +11,7 @@ import { egesServices } from "../../../utils/EGESServices";
 
 import { MdOpenInNew } from "react-icons/md";
 import { MapCard } from "../MapCard";
+import { VersionCard } from "../VersionCard";
 
 const Footer = () => {
     const date = new Date();
@@ -49,13 +50,24 @@ const Footer = () => {
                 </GridContainer>
 
             </footer>
-            <div className="footer-copy-container">
-                <p>Copyright &copy; {date.getFullYear()} Equilibrium EGES</p>
-                <div className="footer-icons">
-                    <IconsList white={true}/>
-                </div>
-            </div>
+            <SecondFooter/>
         </>
     );
 }
+
+const SecondFooter = () => {
+    const date = new Date();
+    
+    return (
+        <WrapperContainer2 
+            className="footer-copy-container"
+            padding={"20px 150px"}
+            justifyContent="space-between"
+        >
+            <TextCard fontSize={10}>Copyright &copy; {date.getFullYear()} Equilibrium EGES</TextCard>
+            <VersionCard/>
+        </WrapperContainer2>
+    );
+}
+
 export {Footer};
