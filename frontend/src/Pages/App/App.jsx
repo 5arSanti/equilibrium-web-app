@@ -4,9 +4,10 @@ import { HashRouter, Navigate, useLocation, useRoutes } from "react-router-dom";
 
 // CSS
 import './App.css'
-import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 //Context
 import { AppProvider } from "../../Context";
@@ -18,14 +19,13 @@ import { Home } from "../Screens/Home";
 import { Footer } from "../components/Footer";
 import { ToastContainer } from "react-toastify";
 import { LoadingCard } from "../components/LoadingCard";
+import { AppRoutes } from "../Routes";
 
 // Utils
 import { scrollToValue } from "../../utils/scrollToValue";
 import { Header } from "../components/Header";
 
-// CSS
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { HeaderContact } from "../components/HeaderContact";
 
 const Wrapper = ({children}) => {
     const location = useLocation();
@@ -36,24 +36,14 @@ const Wrapper = ({children}) => {
     return children;
 }
 
-const AppRoutes = () => {
-
-    let routes = useRoutes([
-        {path: "/home", element: <Home/>},
-        {path: "/*", element: <Navigate replace to={"/home"}/>},
-
-
-    ]);
-    
-    return routes;
-}
-
 const App = () => {
     return (
         <AppProvider>
             <HashRouter>
                 <Wrapper>
                     <Header/>
+                    <HeaderContact/>
+                    
                     <LoadingCard/>
 
                     <AppRoutes/>

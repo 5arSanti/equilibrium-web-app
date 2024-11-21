@@ -2,17 +2,18 @@
 import { ServiceCard } from "../ServiceCard";
 import { WrapperContainer2 } from "../../../WrapperContainers";
 import { egesServices } from "../../../../../utils/EGESServices";
+import { GridContainer } from "../../../GridContainer";
 
 const ServicesContainer = () => {
     return(
-        <WrapperContainer2 flexDirection="column" justifyContent="center" alignItems="start" padding={20} gap={30}>
+        <GridContainer className="grid-1-1-1" padding={0} gap={0}>
             {egesServices?.map((item, index) => (
                 <ServiceCard 
                     key={index}
                     item={item}
                 />
             ))}
-        </WrapperContainer2>
+        </GridContainer>
     )
 }
 

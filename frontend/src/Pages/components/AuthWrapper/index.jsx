@@ -6,6 +6,7 @@ import { AppContext } from "../../../Context";
 import { useNavigate } from "react-router-dom";
 import { handleNotifications } from "../../../utils/handleNotifications";
 import { NotFoundCard } from "../NotFoundCard";
+import { api } from "../../../utils/api";
 
 const AuthWrapper = ({children}) => {
     const context = React.useContext(AppContext);
@@ -16,28 +17,26 @@ const AuthWrapper = ({children}) => {
     React.useEffect(() => {
         scrollToValue();
         
-        axios.get(`${context.apiUri}/user/`)
+        axios.get(`${api}/auth/`)
             .then(response => {
-                const {data} = response;
+                const { data } = response;
 
                 if(data.Status === "Success") {
                     context.setAuth(true);
-                    context.setName(data.name);
+                    context.setUser(data.user);
                 } else {
                     context.setAuth(false);
                 }
             })
             .catch(err => {
                 context.setAuth(false);
-                handleNotifications("error", err)
+                handleNotifications("error", err.message)
                 navigate("/home");
             })
     }, []);
 
     return (
-        // <IsAuthWrapper>
-            children
-        // </IsAuthWrapper>
+        children
     );
 }
 

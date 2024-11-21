@@ -1,6 +1,6 @@
 
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 import { WrapperContainer2 } from "../WrapperContainers";
 
@@ -11,12 +11,12 @@ const IconsList = ({white=false, flexDirection="row", padding=20, justifyContent
         {
             name: "Facebook",
             link: "https://www.facebook.com/share/LEa8SMvd6oBsiMVi/",
-            icon: <FaFacebook className={white ? "white-color" : "lines-color" }/>,
+            icon: <FaFacebookF className={white ? "white-color" : "lines-color" }/>,
         },
         {
             name: "Instagram",
             link: "https://www.instagram.com/equilibriumsantarosa/profilecard/?igsh=aXkxMDBheWo4Y3A3",
-            icon: <FaInstagramSquare className={white ? "white-color" : "lines-color" }/>,
+            icon: <FaInstagram className={white ? "white-color" : "lines-color" }/>,
         },
     ]
 

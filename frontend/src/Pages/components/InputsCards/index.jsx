@@ -1,25 +1,52 @@
+/* eslint-disable react/prop-types */
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import "./styles.css";
 
-const InputCard = ({type="text", id, label, placeholder="placeholder", onChange, required=true, defaultValue="", className="input-container", haveLabel=true}) => {
-    return(
+const InputCard = ({
+    type="text", 
+    id, 
+    label, 
+    placeholder="placeholder", 
+    onChange, 
+    required=true, 
+    defaultValue="", 
+    className="input-container", 
+    haveLabel=true,
+    icon
+}) => {
+
+    return (
         <div className={`${className}`}>
             {haveLabel && <label htmlFor={id}>{label} {required && "*"}</label>}
             
-            <input
-                type={type}
-                placeholder={placeholder}
-                name={id}
-                id={id}
-                onChange={(event) => {onChange(event.target.value)}}
-                required={required}
-                defaultValue={defaultValue}
-            />
+            <div className="icon-input-container">
+                {icon && icon}
+
+                <input
+                    type={type}
+                    placeholder={placeholder}
+                    name={id}
+                    id={id}
+                    onChange={(event) => {onChange(event.target.value)}}
+                    required={required}
+                    defaultValue={defaultValue}
+                />
+            </div>
         </div>
     );
 }
 
-const OptionInputCard = ({id, label, array=[], onChange, defaultValue=0, none=false, padding=15}) => {
+const OptionInputCard = ({
+    id, 
+    label, 
+    array,
+    onChange, 
+    defaultValue="", 
+    none=false, 
+    padding=15,
+    required=false
+}) => {
+
     return(
         <div className="input-container">
             <label htmlFor={id}>{label} </label>
@@ -29,16 +56,17 @@ const OptionInputCard = ({id, label, array=[], onChange, defaultValue=0, none=fa
                 onChange={(event) => {onChange(event.target.value)}}
                 value={defaultValue}
                 style={{padding: padding}}
+                required={required}
             >
                 {none && 
                     <option value="">Seleccionar</option>
                 }
-                {array?.map((item, index) => (
+                {array && array?.map((item, index) => (
                     <option 
                         key={index}
-                        value={item}
+                        value={item.id || item}
                     >
-                        {item}
+                        {item.name || item}
                     </option>
                 ))}
             </select>

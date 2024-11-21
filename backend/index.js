@@ -4,7 +4,6 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const routerApi = require("./routes");
-const { getQuery } = require("./database/query");
 
 const app = express();
 const port = 3080;
@@ -15,10 +14,7 @@ const whiteList = [
 
     // DEV Y QA
 
-
 	// PROD
-
-	
 ];
 
 const options = {
@@ -29,7 +25,7 @@ const options = {
 		  	callback(new Error("Acceso denegado, CORS Error"));
 		}
 	},
-	methods: ["POST", "GET", "DELETE", "PATCH", "OPTIONS"],
+	methods: ["POST", "GET", "DELETE", "PATCH"],
 	credentials: true,
 }
 app.use(cors(options));
@@ -37,19 +33,9 @@ app.use(cors(options));
 app.use(express.json());
 app.use(cookieParser());
 
+
 routerApi(app);
 
 app.listen(port, () => {
     console.log("Escuchando en el puerto: " + port);
 })
-
-
-setInterval(async () => {
-	try {
-		await getQuery("SELECT 1 + 1 AS solution");
-	}
-	catch (err) {
-		console.error("Error en la función verificación periodica de conexión a BD\n" + err.message);
-	}
-
-}, 7200000);

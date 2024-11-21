@@ -1,0 +1,8 @@
+.header-contact-container {
+    background-color: var(--footer-color);
+}
+.header-contact-container svg {
+    width: 15px;
+    height: 15px;
+    fill: var(--white);
+}

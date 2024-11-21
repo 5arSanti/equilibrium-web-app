@@ -5,8 +5,11 @@
     --main-body-color: #EEFAFF;
     --main-title-color: #becfec;
 
-    --lines-color: #85f2fa;
+    --lines-color: #51d3dd;
     --lines-color2: #dff6ff;
+
+    --pallete-1: #83C4FF;
+    --pallete-2: #2e2e2e;
 
     --text-color: #717171;
     --all-info-container-color: #E6EFFD;
@@ -40,7 +43,7 @@ p, span, div, h2, h1 {
 
 body {
     margin: 0;
-    padding: 0;
+    padding: var(--navbar-height) 0 0 0;
     font-family: "Roboto" !important;
     font-weight: 100;
     font-style: normal;

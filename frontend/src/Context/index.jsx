@@ -30,6 +30,13 @@ const AppProvider = ({children}) => {
         }
     }
 
+    React.useEffect(() => {
+        const endpoints = [
+            "/version",
+        ]
+
+        fetchData(endpoints)
+    }, []);
 
     
     // Screen Width

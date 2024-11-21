@@ -1,0 +1,28 @@
+.service-container {
+    background-color: var(--pallete-1);
+    height: 100%;
+
+    transition: all 0.3s ease;
+}
+.service-container:hover {
+    background-color: var(--white);
+}
+
+.service-container p, .service-container h2 {
+    color: var(--white);
+}
+.service-container:hover p, .service-container:hover h2 {
+    color: var(--text-color);
+} 
+
+.service-container svg {
+    fill: var(--white);
+    stroke: var(--white);
+
+    width: 80px;
+    height: 80px;
+}
+.service-container:hover svg {
+    fill: var(--lines-color);
+    stroke: var(--lines-color);
+}
