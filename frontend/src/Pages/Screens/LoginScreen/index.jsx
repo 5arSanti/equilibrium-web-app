@@ -60,7 +60,7 @@ const LoginScreen = () => {
             <StyledSection height="auto">
                 <FadeWrapper>
                     <WrapperContainer2 padding={30} flexDirection="column" justifyContent="center" alignItems="center">
-                        <SectionTitle white={true} title="SCEEV" subTitle="Bienvenido al"/>
+                        <SectionTitle white={true} subTitle="Bienvenido al" title="SCEEV"/>
 
                         <WrapperContainer2 
                             className="login-container" 

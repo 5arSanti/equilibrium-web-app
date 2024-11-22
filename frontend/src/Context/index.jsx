@@ -11,6 +11,7 @@ const AppProvider = ({children}) => {
 
     //Login Auth
     const [auth, setAuth] = React.useState(false);
+    const [user, setUser] = React.useState("");
 
 
     // RESPONSE:
@@ -58,6 +59,9 @@ const AppProvider = ({children}) => {
                 
                 auth,
                 setAuth,
+
+                user,
+                setUser,
 
 
                 //Tamaño de la pantalla

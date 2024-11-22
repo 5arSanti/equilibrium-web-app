@@ -1,14 +1,13 @@
 {
   "name": "equilibrium-frontend",
   "private": true,
-  "version": "1.2.4",
+  "version": "1.2.5",
   "type": "module",
   "scripts": {
     "dev": "nodemon -e .env --exec vite",
     "build": "vite build"
   },
   "dependencies": {
-    "@react-google-maps/api": "^2.19.3",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "moment": "^2.30.1",
