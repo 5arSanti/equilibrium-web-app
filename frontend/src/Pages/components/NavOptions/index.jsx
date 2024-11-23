@@ -10,25 +10,28 @@ import { FaUser, FaUsers } from "react-icons/fa6";
 
 import { AppContext } from "../../../Context";
 import "./styles.css";
+import { Icons } from "../../../utils/Icons";
 
 
 const NavOptions = ({className="nav-buttons animacion2"}) => {
-    const context = React.useContext(AppContext)
+    const { responseData, auth } = React.useContext(AppContext)
+
+    const { mainServices } = responseData;
 
     return(
         <div className="nav-buttons-container">
-            {egesServices.map((item, index) => (
+            {mainServices?.map((item, index) => (
                 <Link 
                     className={className}
                     key={index} 
                     to={item.uri}
                 >
-                    {item.serviceName}
-                    {item.icon}
+                    {item.Nombre_Servicio}
+                    {Icons[item.Icono]}
                 </Link>
             ))}
 
-            {!context.auth && 
+            {!auth && 
                 <Link to={"/login"} className={`${className}`}>Iniciar Sesión <FaUser/></Link>
             }
 

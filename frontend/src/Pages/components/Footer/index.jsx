@@ -1,20 +1,19 @@
 import { Link } from "react-router-dom";
-import { IconsList } from "../IconsList";
 
 import "./styles.css";
-import { WrapperContainer2, WrapperContainer3 } from "../WrapperContainers";
+import { WrapperContainer2 } from "../WrapperContainers";
 import { Title } from "../Title";
 import { TextCard } from "../TextComponents";
-import { contactInfo } from "../../../utils/ContactInfo/contactInfo";
 import { GridContainer } from "../GridContainer";
-import { egesServices } from "../../../utils/EGESServices";
 
 import { MdOpenInNew } from "react-icons/md";
 import { MapCard } from "../MapCard";
 import { VersionCard } from "../VersionCard";
+import React from "react";
+import { AppContext } from "../../../Context";
 
 const Footer = () => {
-    const date = new Date();
+    const { mainServices } = React.useContext(AppContext).responseData;
 
     return (
         <>
@@ -34,10 +33,10 @@ const Footer = () => {
                         </WrapperContainer2>
 
                         <GridContainer className="grid-1-1-1">
-                            {egesServices?.map((item, index) => (
-                                <Link to={"/home"} key={index}>
+                            {mainServices?.map((item, index) => (
+                                <Link to={item.Enlace} key={index}>
                                     <WrapperContainer2 justifyContent="center" alignItems="center" padding={0}>
-                                        <TextCard width="auto" className="animacion2" white={true} textAlign="center">{item.serviceName}</TextCard>
+                                        <TextCard width="auto" className="animacion2" white={true} textAlign="center">{item.Nombre_Servicio}</TextCard>
                                     </WrapperContainer2>
                                 </Link>
                             ))}

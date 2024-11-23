@@ -34,6 +34,7 @@ const AppProvider = ({children}) => {
     React.useEffect(() => {
         const endpoints = [
             "/version",
+            "/services",
         ]
 
         fetchData(endpoints)

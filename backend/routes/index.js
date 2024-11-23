@@ -8,10 +8,9 @@ const usersRouter = require("./users/index.js")
 
 const authRouter = require("./auth")
 
-const columnsRouter = require("./columns/index.js")
-
 const versionRouter = require("./version/index.js");
 
+const servicesRouter = require("./services/index.js");
 
 
 const routerApi = (app) => {
@@ -22,12 +21,9 @@ const routerApi = (app) => {
 	router.use("/users", usersRouter);
 	router.use("/auth", authRouter);
 
-
-
-	router.use("/columns", columnsRouter);
-
 	router.use("/version", versionRouter);
 
+	router.use("/services", servicesRouter);
 }
 
 module.exports = routerApi;
