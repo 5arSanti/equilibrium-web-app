@@ -1,35 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { egesServices } from "../../../utils/EGESServices";
 import { IsAuthWrapper } from "../AuthWrapper";
 import { handleLogout } from "../../../utils/handleData/handleLogout";
 import { IoLogOutOutline } from "react-icons/io5";
 import { FaUser, FaUsers } from "react-icons/fa6";
-
-
 import { AppContext } from "../../../Context";
+import { NavButtons } from "../NavButtons";
+
 import "./styles.css";
-import { Icons } from "../../../utils/Icons";
 
 
-const NavOptions = ({className="nav-buttons animacion2"}) => {
-    const { responseData, auth } = React.useContext(AppContext)
-
-    const { mainServices } = responseData;
+const NavOptions = ({className="nav-buttons animacion2 pl2"}) => {
+    const { auth } = React.useContext(AppContext)
 
     return(
         <div className="nav-buttons-container">
-            {mainServices?.map((item, index) => (
-                <Link 
-                    className={className}
-                    key={index} 
-                    to={item.uri}
-                >
-                    {item.Nombre_Servicio}
-                    {Icons[item.Icono]}
-                </Link>
-            ))}
+            <NavButtons className={className}/>
 
             {!auth && 
                 <Link to={"/login"} className={`${className}`}>Iniciar Sesión <FaUser/></Link>

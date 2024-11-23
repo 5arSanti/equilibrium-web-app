@@ -11,6 +11,7 @@ import { MapCard } from "../MapCard";
 import { VersionCard } from "../VersionCard";
 import React from "react";
 import { AppContext } from "../../../Context";
+import { NavButtons } from "../NavButtons";
 
 const Footer = () => {
     const { mainServices } = React.useContext(AppContext).responseData;
@@ -33,13 +34,7 @@ const Footer = () => {
                         </WrapperContainer2>
 
                         <GridContainer className="grid-1-1-1">
-                            {mainServices?.map((item, index) => (
-                                <Link to={item.Enlace} key={index}>
-                                    <WrapperContainer2 justifyContent="center" alignItems="center" padding={0}>
-                                        <TextCard width="auto" className="animacion2" white={true} textAlign="center">{item.Nombre_Servicio}</TextCard>
-                                    </WrapperContainer2>
-                                </Link>
-                            ))}
+                            <NavButtons/>
                         </GridContainer>
 
                         <WrapperContainer2 justifyContent="center" alignItems="center" padding={"40px 0px 0px 0px"} className="border-top">

@@ -44,17 +44,19 @@
     bottom: 0px;
     width: 0;
     height: 2px;
-    background-color: white;
+    background-color: var(--white);
     transition: width .5s ease, left .5s ease;
 }
-.animacion2-blue::after {
-    background-color: var(--lines-color) !important;
-}
-
 .animacion2:hover::after {
     left: 0%;
     width: 100%;
 }
+
+.pl2::after {
+    background-color: var(--pallete-2) !important;
+}
+
+
 
 .relative {
     position: relative;

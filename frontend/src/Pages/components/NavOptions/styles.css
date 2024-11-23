@@ -23,6 +23,8 @@
 	cursor: pointer;
 
 	font-size: 14px;
+
+    text-align: center;
 }
 .nav-buttons svg {
 	width: 20px;
