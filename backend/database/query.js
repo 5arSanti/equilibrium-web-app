@@ -25,4 +25,16 @@ const postQuery = (query, values) => {
     });
 }
 
-module.exports = { getQuery, postQuery };
+const valuesQuery = (query, values) => {
+	return new Promise((resolve, reject) => {
+        sql.query(query, values, (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results.recordset);
+            }
+        });
+    });
+}
+
+module.exports = { getQuery, postQuery, valuesQuery };

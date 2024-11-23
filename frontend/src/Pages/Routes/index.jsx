@@ -5,6 +5,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { Home } from "../Screens/Home";
 import { RegisterScreen } from "../Screens/RegisterScreen";
 import { LoginScreen } from "../Screens/LoginScreen";
+import { UsersScreen } from "../Screens/UsersScreen";
 
 const AppRoutes = () => {
 
@@ -13,9 +14,11 @@ const AppRoutes = () => {
 
     let routes = useRoutes([
         {path: "/home", element: <Home/>},
-        {path: "/*", element: <Navigate replace to={"/home"}/>},
+        // {path: "/*", element: <Navigate replace to={"/home"}/>},
         
-
+        
+        
+        {path: "/users", element: <UsersScreen/>},
         {path: "/register", element: <RegisterScreen/>},
 
         {path: "/login", element: !auth ? <LoginScreen/> : <Navigate replace to={"/home"}/>},

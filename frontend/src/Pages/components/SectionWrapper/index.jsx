@@ -1,4 +1,5 @@
 import { FadeWrapper } from "../FadeWrapper";
+import { WrapperContainer2 } from "../WrapperContainers";
 
 import "./styles.css"
 
@@ -14,7 +15,9 @@ const SectionWrapper = ({children, id="", border=true, flexDirection = "column",
             {border && <div className="section-decoration"></div>}
 
             <FadeWrapper>
-                {children}
+                <WrapperContainer2 flexDirection="column" padding={125} className="secondary-section-wrapper">
+                    {children}
+                </WrapperContainer2>
             </FadeWrapper>
         </section>
 

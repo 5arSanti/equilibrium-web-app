@@ -111,18 +111,21 @@ INSERT INTO Categorias_Servicios VALUES
 CREATE TABLE Servicios_Asociados (
 	ID_Servicio_Asociado INT PRIMARY KEY NOT NULL,
 	Nombre VARCHAR(255) NOT NULL,
-	Descripcion TEXT NULL,
+	Descripcion TEXT NOT NULL,
 	Imagen VARBINARY(MAX) NULL,
+	Precio MONEY NOT NULL,
+	ID_Categoria INT FOREIGN KEY REFERENCES Categorias_Servicios(ID_Categoria) NOT NULL,
 );
-INSERT INTO Servicios_Asociados (ID_Servicio_Asociado, Nombre) VALUES
-(1, 'Tratamientos faciales'),
-(2, 'Tratamientos corporales'),
-(3, 'Servicios de SPA'),
-(4, 'Medicina general'),
-(5, 'Medicina homeopática'),
-(6, 'Laboratorio clínico'),
-(7, 'Servicios de enfermeria'),
-(8, 'Clínica de heridas');
+
+INSERT INTO Servicios_Asociados (ID_Servicio_Asociado, Nombre, Descripcion, Precio, ID_Categoria) VALUES
+(1, 'Tratamientos faciales', 'Cuidado especializado para mejorar la salud y apariencia de la piel del rostro, incluyendo limpieza, hidratación y rejuvenecimiento.', 140000, 1),
+(2, 'Tratamientos corporales', 'Terapias para el cuidado integral del cuerpo, como masajes, exfoliaciones y envolturas, que promueven bienestar y belleza.', 250000, 2),
+(3, 'Servicios de SPA', 'Experiencias relajantes con masajes, aromaterapia y otros tratamientos diseñados para aliviar el estrés y revitalizar el cuerpo y la mente.', 300000, 3),
+(4, 'Medicina general', 'Consulta médica integral para diagnóstico, prevención y tratamiento de diversas condiciones de salud.', 100000, 3),
+(5, 'Medicina homeopática', 'Terapias naturales que buscan estimular la capacidad de autocuración del cuerpo mediante remedios personalizados.', 120000, 3),
+(6, 'Laboratorio clínico', 'Servicios de análisis clínicos confiables para el diagnóstico y monitoreo de condiciones de salud.', 150000, 3),
+(7, 'Servicios de enfermeria', 'Atención profesional para cuidados básicos y especializados, incluyendo administración de medicamentos y curaciones.', 100000, 3),
+(8, 'Clínica de heridas', 'Atención especializada para la evaluación y tratamiento avanzado de heridas crónicas y agudas.', 80000, 3);
 
 
 
@@ -130,7 +133,7 @@ CREATE TABLE Detalles_Servicios_Principales_Serivicos_Asociados (
 	ID_Servicio_Principal INT FOREIGN KEY REFERENCES Servicios_Principales(ID_Servicio_Principal),
 	ID_Servicio_Asociado INT FOREIGN KEY REFERENCES Servicios_Asociados(ID_Servicio_Asociado),
 );
-INSERT INTO Detalles_Servicios_Principales_Serivicos_Asociados (ID_Servicio_Principal, ID_Servicio_Asociado) VALUES
+INSERT INTO Detalles_Servicios_Principales_Servicios_Asociados (ID_Servicio_Principal, ID_Servicio_Asociado) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
@@ -142,12 +145,95 @@ INSERT INTO Detalles_Servicios_Principales_Serivicos_Asociados (ID_Servicio_Prin
 (2, 8);
 
 
+-- Estado de los horarios
+CREATE TABLE Estado_Horario (
+	ID_Estado_Horario INT PRIMARY KEY NOT NULL,
+	Estado VARCHAR(20) NOT NULL
+)
+
+INSERT INTO Estado_Horario (ID_Estado_Horario, Estado) VALUES
+(0, 'Ocupado'),
+(1, 'Disponible');
+
 -- Detalles_Horarios_Servicios_Asociados
 CREATE TABLE Detalles_Horarios_Servicios_Asociados (
-    ID_Horario_Servicio INT PRIMARY KEY IDENTITY(1,1),
     ID_Servicio_Asociado INT FOREIGN KEY REFERENCES Servicios_Asociados(ID_Servicio_Asociado),
-    ID_Horario INT FOREIGN KEY REFERENCES Horarios(ID_Horario)
+    ID_Horario INT FOREIGN KEY REFERENCES Horarios(ID_Horario),
+	ID_Estado_Horario INT FOREIGN KEY REFERENCES Estado_Horario(ID_Estado_Horario),
 );
+INSERT INTO Detalles_Horarios_Servicios_Asociados (ID_Servicio_Asociado, ID_Horario) VALUES
+(1, 1, 1),
+(1, 2, 1),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 1),
+(1, 6, 1),
+(1, 7, 1),
+(1, 8, 1),
+
+(2, 1, 1),
+(2, 2, 1),
+(2, 3, 1),
+(2, 4, 1),
+(2, 5, 1),
+(2, 6, 1),
+(2, 7, 1),
+(2, 8, 1),
+
+(3, 1, 1),
+(3, 2, 1),
+(3, 3, 1),
+(3, 4, 1),
+(3, 5, 1),
+(3, 6, 1),
+(3, 7, 1),
+(3, 8, 1),
+
+(4, 1, 1),
+(4, 2, 1),
+(4, 3, 1),
+(4, 4, 1),
+(4, 5, 1),
+(4, 6, 1),
+(4, 7, 1),
+(4, 8, 1),
+
+(5, 1, 1),
+(5, 2, 1),
+(5, 3, 1),
+(5, 4, 1),
+(5, 5, 1),
+(5, 6, 1),
+(5, 7, 1),
+(5, 8, 1),
+
+(6, 1, 1),
+(6, 2, 1),
+(6, 3, 1),
+(6, 4, 1),
+(6, 5, 1),
+(6, 6, 1),
+(6, 7, 1),
+(6, 8, 1),
+
+(7, 1, 1),
+(7, 2, 1),
+(7, 3, 1),
+(7, 4, 1),
+(7, 5, 1),
+(7, 6, 1),
+(7, 7, 1),
+(7, 8, 1),
+
+(8, 1, 1),
+(8, 2, 1),
+(8, 3, 1),
+(8, 4, 1),
+(8, 5, 1),
+(8, 6, 1),
+(8, 7, 1),
+(8, 8, 1);
+
 
 -- Noticias
 CREATE TABLE Tipo_Noticia (
