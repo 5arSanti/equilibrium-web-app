@@ -129,7 +129,7 @@ INSERT INTO Servicios_Asociados (ID_Servicio_Asociado, Nombre, Descripcion, Prec
 
 
 
-CREATE TABLE Detalles_Servicios_Principales_Serivicos_Asociados (
+CREATE TABLE Detalles_Servicios_Principales_Servicios_Asociados (
 	ID_Servicio_Principal INT FOREIGN KEY REFERENCES Servicios_Principales(ID_Servicio_Principal),
 	ID_Servicio_Asociado INT FOREIGN KEY REFERENCES Servicios_Asociados(ID_Servicio_Asociado),
 );
@@ -161,7 +161,7 @@ CREATE TABLE Detalles_Horarios_Servicios_Asociados (
     ID_Horario INT FOREIGN KEY REFERENCES Horarios(ID_Horario),
 	ID_Estado_Horario INT FOREIGN KEY REFERENCES Estado_Horario(ID_Estado_Horario),
 );
-INSERT INTO Detalles_Horarios_Servicios_Asociados (ID_Servicio_Asociado, ID_Horario) VALUES
+INSERT INTO Detalles_Horarios_Servicios_Asociados (ID_Servicio_Asociado, ID_Horario, ID_Estado_Horario) VALUES
 (1, 1, 1),
 (1, 2, 1),
 (1, 3, 1),

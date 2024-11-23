@@ -26,10 +26,11 @@ router.get("/", async (request, response) => {
 });
 
 router.get("/:ID_Service", async (request, response) => {
+
 	const { ID_Service } = request.params;
 
 	try {
-		const mainServices = await valuesQuery(`
+		const mainService = await getQuery(`
 			SELECT
 				sp.ID_Servicio_Principal AS id,
 				UPPER(sp.Nombre) AS Nombre_Servicio,
@@ -37,17 +38,17 @@ router.get("/:ID_Service", async (request, response) => {
 				sp.Icono,
 				sp.Enlace,
 				e.Nombre AS Entidad
-			FROM Servicios_Principales sp
 
+			FROM Servicios_Principales sp
 			JOIN Entidades e ON sp.ID_Entidad = e.ID_Entidad
 
-			WHERE sp.ID_Servicio_Principal = @ID_Service
-		`, [ID_Service]);
+			WHERE sp.ID_Servicio_Principal = ${ID_Service}
+		`);
 
-		const asociateServices = await valuesQuery(`
+		const asociateServices = await getQuery(`
 			SELECT
 				sa.ID_Servicio_Asociado AS id,
-				UPPER(sa.Nombre) AS Nombre_Servicio,
+				sa.Nombre AS Nombre_Servicio,
 				sa.Descripcion,
 				sa.Imagen,
 				sa.Precio,
@@ -56,14 +57,17 @@ router.get("/:ID_Service", async (request, response) => {
 			FROM Detalles_Servicios_Principales_Serivicos_Asociados dspsa
 
 			JOIN Servicios_Asociados sa ON dspsa.ID_Servicio_Asociado = sa.ID_Servicio_Asociado
-			JOIN Categorias_Servicios cs ON sa.ID_Categoria = sc.ID_Categoria
+			JOIN Categorias_Servicios cs ON sa.ID_Categoria = cs.ID_Categoria
 
-			WHERE dspsa.ID_Servicio_Principal = @ID_Service
+			WHERE dspsa.ID_Servicio_Principal = ${ID_Service}
+		`);
 
-		`, [ID_Service])
 
-
-		return response.status(200).json({Status: "Success", mainServices: mainServices});
+		return response.status(200).json({
+			Status: "Success",
+			mainService: mainService[0],
+			asociateServices: asociateServices,
+		});
 	}
 	catch (err) {
 		return response.status(500).json({Error: err.message});
