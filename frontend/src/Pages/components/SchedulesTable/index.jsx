@@ -11,7 +11,7 @@ const SchedulesTable = ({ schedulesByDay = {} }) => {
         <table className="table-container">
             <thead>
                 <tr>
-                    {headers.map((day, index) => (
+                    {headers?.map((day, index) => (
                         <th key={index} style={{ textAlign: 'center' }}>
                             {day}
                         </th>
@@ -19,7 +19,7 @@ const SchedulesTable = ({ schedulesByDay = {} }) => {
                 </tr>
             </thead>
             <tbody>
-                {headers.map((day, index) => (
+                {headers?.map((day, index) => (
                     <td key={index} style={{padding: 0}}>
                         <WrapperContainer2 
                             flexDirection="column"
@@ -29,13 +29,13 @@ const SchedulesTable = ({ schedulesByDay = {} }) => {
                             {schedulesByDay[day]?.map((schedule, idx) => (
                                 <WrapperContainer2 key={idx}
                                     flexDirection="column"
-                                    gap={5}
+                                    gap={0}
                                     padding={5}
-                                    className={`schedule-card ${schedule?.ID_Estado_Horario == 1 ? "green-bg" : "red-bg"}`}
+                                    className={`schedule-card ${schedule?.ID_Estado_Horario !== 1 && "red-bg"}`}
                                 >
                                     <TextCard fontSize={14} textAlign="center">
                                         <SpanCard fontSize={12}>Hora:</SpanCard> <br />
-                                        {moment(schedule.Hora_Inicio, "HH:mm").format("HH:mm A")} - {moment(schedule.Hora_Fin, "HH:mm").format("HH:mm A")}
+                                        {moment(schedule.Hora_Inicio, "HH:mm").format("HH:mm A")} - {moment(schedule.Hora_Fin, "HH:mm A").format("HH:mm A")}
                                     </TextCard>
                                     <TextCard textAlign="center">
                                         <SpanCard fontSize={12}>{schedule.Estado}</SpanCard>

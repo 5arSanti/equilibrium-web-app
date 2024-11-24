@@ -1,5 +1,4 @@
-import { Fade } from "react-awesome-reveal";
-
+/* eslint-disable react/prop-types */
 import "./styles.css";
 
 const WrapperContainer1 = ({children, flexDirection = "row", padding = 20, gap = 15, justifyContent="start", alignItems="center"}) => {
@@ -16,7 +15,17 @@ const WrapperContainer1 = ({children, flexDirection = "row", padding = 20, gap =
     );
 }
 
-const WrapperContainer2 = ({children, flexDirection = "row", padding = 20, paddingVertical=null, gap = 15, justifyContent="start", alignItems="center", className=""}) => {
+const WrapperContainer2 = ({
+        children, 
+        flexDirection = "row", 
+        padding = 20, 
+        paddingVertical=null, 
+        gap = 15, 
+        justifyContent="start", 
+        alignItems="center", 
+        className="",
+        height="100%"
+    }) => {
     return(
         <div className={`wrapper-container2 ${className}`} style={{
             flexDirection: flexDirection,
@@ -25,23 +34,35 @@ const WrapperContainer2 = ({children, flexDirection = "row", padding = 20, paddi
             paddingBottom: paddingVertical || padding,
             gap: gap,
             justifyContent: justifyContent,
-            alignItems: alignItems
+            alignItems: alignItems,
+            height: height
         }}>
             {children}
         </div>
     );
 }
 
-const WrapperContainer3 = ({children, flexDirection = "row", padding = 20, paddingVertical=null, gap = 15, justifyContent="start", alignItems="center", className=""}) => {
+const WrapperContainer3 = ({
+    children, 
+    flexDirection = "row", 
+    padding = 20, 
+    paddingVertical=null, 
+    gap = 15, 
+    justifyContent="start", 
+    alignItems="center", 
+    className="",
+    height="auto"
+}) => {
     return(
-        <div className={`wrapper-container3 border-left-style shadow-style ${className}`} style={{
+        <div className={`wrapper-container3 ${className}`} style={{
             flexDirection: flexDirection,
             padding: padding,
             paddingTop: paddingVertical || padding,
             paddingBottom: paddingVertical || padding,
             gap: gap,
             justifyContent: justifyContent,
-            alignItems: alignItems
+            alignItems: alignItems,
+            height: height,
         }}>
             {children}
         </div>

@@ -19,6 +19,7 @@ const StyleCard1 = ({item={}}) => {
                 justifyContent="center"
                 alignItems="center"
                 className="style-card2 relative"
+                height="100vh"
             >
                 <div className="project-info relative">
                     <WrapperContainer2 

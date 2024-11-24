@@ -1,5 +1,13 @@
 .schedule-card {
-    border: 1px solid var(--white);;
+    border: 1px solid var(--white);
+    opacity: 1;
+    cursor: pointer;
+}
+.schedule-card:hover {
+    background-color: var(--pallete-1);
+    p {color: var(--white) !important;} &
+    span {color: var(--white) !important;} 
+
 }
 
 .green-bg {

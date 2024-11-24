@@ -10,6 +10,14 @@ import { SectionTitle } from "../../components/SectionWrapper/SectionTitle";
 import { TextCard } from "../../components/TextComponents";
 import { TableContainer } from "../../components/TableContainer";
 import { SchedulesTable } from "../../components/SchedulesTable";
+import { GridContainer } from "../../components/GridContainer";
+import { WrapperContainer2 } from "../../components/WrapperContainers";
+import { SubTitle } from "../../components/SubTitle";
+import { SubInfoCard } from "../../components/SubInfoCard";
+import { LogInfoCard } from "../../components/LogInfoCard";
+import { formatNumbers } from "../../../utils/Format/formatNumbers";
+import { MdSavings } from "react-icons/md";
+import { BiCategoryAlt } from "react-icons/bi";
 
 const AsociateServiceScreen = () => {
     const { Associate_ID } = useParams();
@@ -40,11 +48,36 @@ const AsociateServiceScreen = () => {
 
             <SectionWrapper>
                 <SectionTitle subTitle={`Le ofrecemos lo que usted necesita`} title="Sobre el servicio"/>
-                <TextCard textAlign="center">{associateService?.Descripcion}</TextCard>
-            </SectionWrapper>
+                
+                <WrapperContainer2 justifyContent="start" alignItems="start" flexDirection="column" gap={35}>
+                    <SubTitle fontSize={24}>{associateService?.Nombre_Servicio}</SubTitle>
+                    <SubInfoCard 
+                        titleSize={18} 
+                        textSize={16} 
+                        subTitle={"Descripción del servicio."} 
+                        text={associateService?.Descripcion}
+                        textAlign="start"
+                    />
 
-            <SectionWrapper>
-                <SchedulesTable schedulesByDay={associateSchedules}/>
+                    <GridContainer>
+                        <LogInfoCard 
+                            title={"Coste por sesion"} 
+                            text={`$ ${formatNumbers(associateService?.Precio)}`} 
+                            icon={<MdSavings/>}
+                        />
+                        <LogInfoCard 
+                            title={"Categoria"} 
+                            text={associateService?.Categoria} 
+                            icon={<BiCategoryAlt/>}
+                        />
+                        
+                    </GridContainer>
+
+                    <SubTitle fontSize={24}>Horarios</SubTitle>
+
+                    <SchedulesTable schedulesByDay={associateSchedules}/>
+                </WrapperContainer2>
+
             </SectionWrapper>
                 
         </AuthWrapper>
