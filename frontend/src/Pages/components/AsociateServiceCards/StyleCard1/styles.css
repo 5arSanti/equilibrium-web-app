@@ -1,0 +1,64 @@
+.style-card2{
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+.style-card2 img{
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter: contrast(.9);
+    transition: .75s ease;
+}
+
+
+.project-info{
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    gap: 50px;
+
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    background: rgba(0,0,0, 1);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 10%, transparent 100%);
+    background-size: 250% auto;
+    background-position: 200% auto;
+
+    transition: background 0.75s ease;
+}
+
+.title-and-info-container {
+    width: 70%;
+    justify-self: center;
+}
+
+
+.style-card2:hover img{
+    filter: contrast(1.2);
+    transform: scale(1.1);
+}
+.style-card2:hover .project-info {
+    background-position: 40%;
+}
+
+
+
+@media (max-width:913px){
+    .project-info{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+}

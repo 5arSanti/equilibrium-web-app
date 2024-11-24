@@ -260,6 +260,7 @@ CREATE TABLE Opiniones (
 	Nombres VARCHAR(50) NOT NULL,
 	Apellidos VARCHAR(50) NOT NULL,
 	Fecha_Publicacion DATETIME NOT NULL,
+	ID_Servicio_Asociado INT FOREIGN KEY REFERENCES Servicios_Asociados(ID_Servicio_Asociado) NOT NULL,
 )
 
 
