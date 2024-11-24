@@ -11,6 +11,7 @@ const AppProvider = ({children}) => {
 
     //Login Auth
     const [auth, setAuth] = React.useState(false);
+    const [admin, setAdmin] = React.useState(false);
     const [user, setUser] = React.useState("");
 
 
@@ -63,6 +64,9 @@ const AppProvider = ({children}) => {
 
                 user,
                 setUser,
+
+                admin,
+                setAdmin,
 
 
                 //Tamaño de la pantalla

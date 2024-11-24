@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken")
 const PropertiesReader = require('properties-reader');
 const { validateObjectValues } = require("../../Utils/Validate/validateObjectValues");
 const { validatePassword } = require("../../Utils/Validate/validatePassword");
+const { verifyAdmin } = require("../../middlewares/verifyAdmin");
 const properties = PropertiesReader('./app.properties.ini');
 
 const router = express.Router();
@@ -63,14 +64,18 @@ router.post("/login", async (request, response) => {
 			return response.json({ Error: "El usuario no está registrado." });
 		}
 
-		const passStatus = await bcrypt.compare(password.toString(), dbUser[0].Contraseña);
+		const passStatus = await bcrypt.compare(String(password), dbUser[0].Contraseña);
 
 		if(!passStatus) { return response.status(404).json({ Error: "La contraseña es incorrecta" }); }
 
 
 		const user = dbUser[0];
 		const token = jwt.sign({user: user}, `${properties.get("app.login.token")}`, {expiresIn: "1d"});
-		response.cookie("authToken", token);
+
+		response.cookie("authToken", token, {
+			httpOnly: true,
+			maxAge: 24 * 60 * 60 * 1000
+		});
 
 		return response.json({ Status: "Success", message: "Sesión iniciada correctamente"});
 

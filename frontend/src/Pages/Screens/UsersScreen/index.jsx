@@ -1,4 +1,5 @@
-import { AuthWrapper, IsAuthWrapper } from "../../components/AuthWrapper";
+import { AuthWrapper } from "../../components/AuthWrapper";
+import { IsAdminWrapper } from "../../components/AuthWrapper/IsAdminWrapper";
 import { MainSectionInfoCard } from "../../components/MainSectionInfoCard";
 import { SectionActualUser } from "../../components/ScreenUsers/SectionActualUser";
 import { SectionUsersList } from "../../components/ScreenUsers/SectionUsersList";
@@ -9,7 +10,7 @@ import { FaUsers } from "react-icons/fa";
 const UsersScreen = () => {
     return(
         <AuthWrapper>
-            <IsAuthWrapper notFound={true}>
+            <IsAdminWrapper notFound={true}>
                 <StyledSection>
                     <MainSectionInfoCard
                         title="Usuarios"
@@ -21,7 +22,7 @@ const UsersScreen = () => {
                 <SectionActualUser/>
 
                 <SectionUsersList/>
-            </IsAuthWrapper>
+            </IsAdminWrapper>
         </AuthWrapper>
     );
 }

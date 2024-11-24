@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthWrapper, IsAuthWrapper } from "../../components/AuthWrapper";
+import { AuthWrapper } from "../../components/AuthWrapper";
 import { MainSectionInfoCard } from "../../components/MainSectionInfoCard";
 import { StyledSection } from "../../components/StyledSection";
 import { AppContext } from "../../../Context";

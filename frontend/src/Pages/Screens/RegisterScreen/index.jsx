@@ -2,7 +2,7 @@ import React from "react";
 
 import { AppContext } from "../../../Context";
 
-import { AuthWrapper, IsAuthWrapper } from "../../components/AuthWrapper";
+import { AuthWrapper } from "../../components/AuthWrapper";
 import { handleInputChange } from "../../../utils/handleInputChange";
 import { InputCard, OptionInputCard } from "../../components/InputsCards";
 import { handlePostData } from "../../../utils/handleData/handlePostData";
@@ -12,6 +12,7 @@ import { FadeWrapper } from "../../components/FadeWrapper";
 import { SectionTitle } from "../../components/SectionWrapper/SectionTitle";
 import { TextCard } from "../../components/TextComponents";
 import { GridContainer } from "../../components/GridContainer";
+import { IsAdminWrapper } from "../../components/AuthWrapper/IsAdminWrapper";
 
 const RegisterScreen = () => {
     const context = React.useContext(AppContext);
@@ -38,7 +39,7 @@ const RegisterScreen = () => {
     return(
 
         <AuthWrapper>
-            <IsAuthWrapper notFound={true}>
+            <IsAdminWrapper notFound={true}>
                 <StyledSection height="auto">
                     <FadeWrapper>
                         <WrapperContainer2 padding={30} flexDirection="column" justifyContent="center" alignItems="center">
@@ -119,7 +120,7 @@ const RegisterScreen = () => {
                         </WrapperContainer2>
                     </FadeWrapper>
                 </StyledSection>
-            </IsAuthWrapper>
+            </IsAdminWrapper>
         </AuthWrapper>
     );
 }

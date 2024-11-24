@@ -1,4 +1,5 @@
-import { AuthWrapper, IsAuthWrapper } from "../../components/AuthWrapper";
+import { AuthWrapper } from "../../components/AuthWrapper";
+import { IsAdminWrapper } from "../../components/AuthWrapper/IsAdminWrapper";
 import { MainSectionInfoCard } from "../../components/MainSectionInfoCard";
 import { AdminDashboard } from "../../components/ScreenAdminDashboard/AdminDashboard";
 import { StyledSection } from "../../components/StyledSection";
@@ -9,7 +10,7 @@ const AdminDashboardScreen = () => {
 
     return(
         <AuthWrapper>
-            <IsAuthWrapper notFound={true}>
+            <IsAdminWrapper notFound={true}>
                 <StyledSection>
                     <MainSectionInfoCard
                         white={true}
@@ -21,7 +22,7 @@ const AdminDashboardScreen = () => {
 
                 <AdminDashboard/>
 
-            </IsAuthWrapper>
+            </IsAdminWrapper>
         </AuthWrapper>
     );
 }

@@ -14,7 +14,7 @@ const verifyUser = (request, response, next) => {
 
 	jwt.verify(token, `${properties.get("app.login.token")}`, (err, decoded) => {
 		if (err) {
-			return response.json({Error: "Error con el Token de autenticación"})
+			return response.status(401).json({Error: "Error con el Token de autenticación"})
 		}
 
 		request.user = decoded;
