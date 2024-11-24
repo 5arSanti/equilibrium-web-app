@@ -7,9 +7,11 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const { validateObjectValues } = require("../../Utils/Validate/validateObjectValues");
 const { validatePassword } = require("../../Utils/Validate/validatePassword");
+const { verifyUser } = require("../../middlewares/verifyUser");
+const { verifyAdmin } = require("../../middlewares/verifyAdmin");
 
 
-router.get("/", async (request, response) => {
+router.get("/", verifyUser, verifyAdmin, async (request, response) => {
 	try {
 		const query = `
 			SELECT
@@ -102,5 +104,43 @@ router.get("/types", async (request, response) => {
 		return response.status(500).json({Error: err.message});
 	}
 })
+
+router.post("/new", async (request, response) => {
+	try {
+		validateObjectValues(request.body);
+
+		const {
+			Cedula_Usuario,
+			Nombre,
+			Apellidos,
+			Correo,
+			Contraseña,
+			Confirmar_Contraseña,
+			Imagen,
+			ID_Genero,
+		} = request.body;
+
+		validatePassword(Contraseña, Confirmar_Contraseña);
+
+		const dbUser = await getQuery(`SELECT * FROM Usuarios WHERE Cedula_Usuario = ${Cedula_Usuario} OR Correo = '${Correo}'`);
+
+		if(dbUser.length !== 0) { return response.json({Error: "El usuario con este numero de cedula o correo ya esta registrado"}); }
+
+		const hash = await bcrypt.hash(String(Contraseña), salt);
+
+		const query = `
+			INSERT INTO Usuarios (Cedula_Usuario, Nombre, Apellidos, Correo, Contraseña, Imagen, ID_Genero)
+			VALUES
+			(${Cedula_Usuario},'${Nombre}', '${Apellidos}', '${Correo}', '${hash}', ${Imagen}, ${ID_Genero})
+		`;
+
+		await getQuery(query);
+
+		return response.json({Status: "Success", message: "Usuario creado correctamente"});
+	}
+	catch (err) {
+		return response.json({Error: err.message})
+	}
+});
 
 module.exports = router;

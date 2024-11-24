@@ -64,9 +64,9 @@ const OptionInputCard = ({
                 {array && array?.map((item, index) => (
                     <option 
                         key={index}
-                        value={item.id || item}
+                        value={item?.id || item}
                     >
-                        {item.name || item}
+                        {item?.Nombre || item}
                     </option>
                 ))}
             </select>
@@ -90,7 +90,15 @@ const TextAreaCard = ({id, label, placeholder="placeholder", onChange, required=
     );
 }
 
-const UploadFileCard = ({id, label="Cargar Archivo", onChange, filesArray, multiple=true, info="Archivos PDF (.pdf) o Excel (.xlsx)", accept=".pdf, .xlsx"}) => {
+const UploadFileCard = ({
+    id, 
+    label="Cargar Archivo", 
+    onChange, 
+    filesArray, 
+    multiple=false, 
+    info="Archivos PDF (.pdf) o Excel (.xlsx)", 
+    accept=".pdf, .xlsx"
+}) => {
     const array = filesArray ? [...filesArray] : null;
 
     return(

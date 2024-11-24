@@ -17,6 +17,18 @@ INSERT INTO Tipo_Usuarios (ID_Tipo_Usuarios, Nombre) VALUES
 (2, 'Cliente');
 
 
+-- Sexos
+CREATE TABLE Generos (
+	ID_Genero INT PRIMARY KEY NOT NULL,
+	Genero VARCHAR(20) NOT NULL,
+)
+
+INSERT INTO Generos (ID_Genero, Genero) VALUES 
+(1, 'Femenino'),
+(2, 'Masculino'),
+(3, 'Otro');
+
+
 -- Usuarios
 CREATE TABLE Usuarios (
 	Cedula_Usuario INT PRIMARY KEY NOT NULL,
@@ -24,11 +36,13 @@ CREATE TABLE Usuarios (
 	Apellidos VARCHAR(50) NOT NULL,
 	Correo VARCHAR(255) NOT NULL,
 	Contraseña TEXT NOT NULL,
-	ID_Tipo_De_Usuario INT FOREIGN KEY REFERENCES Tipo_Usuarios(ID_Tipo_Usuarios) NOT NULL
+	Imagen VARBINARY(MAX) NULL,
+	ID_Tipo_De_Usuario INT FOREIGN KEY REFERENCES Tipo_Usuarios(ID_Tipo_Usuarios) DEFAULT 2 NOT NULL,
+	ID_Genero INT FOREIGN KEY REFERENCES Generos(ID_Genero) NOT NULL
 )
 
-INSERT INTO Usuarios (Cedula_Usuario, Nombre, Apellidos, Correo, Contraseña, ID_Tipo_De_Usuario) VALUES 
-(1016947063, 'Johel Santiago', 'Arias Becerra', 'santiari05@hotmail.com', '$2b$10$pY5JINU8DNEU1DuLLPE/a.Arm9VipTccjKNeQ2S6n/sqPTrOaU68C', 1)
+INSERT INTO Usuarios (Cedula_Usuario, Nombre, Apellidos, Correo, Contraseña, ID_Tipo_De_Usuario, ID_Genero) VALUES 
+(1016947063, 'Johel Santiago', 'Arias Becerra', 'santiari05@hotmail.com', '$2b$10$pY5JINU8DNEU1DuLLPE/a.Arm9VipTccjKNeQ2S6n/sqPTrOaU68C', 1, 2)
 
 
 

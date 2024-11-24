@@ -16,6 +16,8 @@ const associatesRouter = require("./associates/index.js");
 
 const entidadesRouter = require("./entidades/index.js");
 
+const genresRouter = require("./genres/index.js");
+
 
 const routerApi = (app) => {
 	const router = express.Router();
@@ -31,8 +33,9 @@ const routerApi = (app) => {
 
 	router.use("/associates", associatesRouter);
 
-
 	router.use("/entidades", entidadesRouter);
+
+	router.use("/genres", genresRouter);
 }
 
 module.exports = routerApi;

@@ -18,6 +18,7 @@ import { SectionTitle } from "../../components/SectionWrapper/SectionTitle";
 import { TextCard } from "../../components/TextComponents";
 import { FadeWrapper } from "../../components/FadeWrapper";
 import { AuthWrapper } from "../../components/AuthWrapper";
+import { ButtonCard } from "../../components/ButtonCard";
 
 const LoginScreen = () => {
     const context = React.useContext(AppContext);
@@ -60,7 +61,7 @@ const LoginScreen = () => {
             <StyledSection height="auto">
                 <FadeWrapper>
                     <WrapperContainer2 padding={30} flexDirection="column" justifyContent="center" alignItems="center">
-                        <SectionTitle white={true} subTitle="Bienvenido al" title="SCEEV"/>
+                        <SectionTitle white={true} subTitle="Bienvenido a" title="EQUILIBRIUM EGES"/>
 
                         <WrapperContainer2 
                             className="login-container" 
@@ -90,7 +91,11 @@ const LoginScreen = () => {
                                     defaultValue={values?.password}
                                 />
                                 <button type="submit">Iniciar sesion</button>
+
                             </form>
+
+                                <TextCard white={true} textAlign="center">¿No tiene cuenta?</TextCard>
+                                <ButtonCard onClick={() => navigate("/register")}>Registrate</ButtonCard>
                         </WrapperContainer2>
                     </WrapperContainer2>
                 </FadeWrapper>

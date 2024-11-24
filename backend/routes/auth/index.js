@@ -85,36 +85,6 @@ router.post("/login", async (request, response) => {
 });
 
 
-router.post("/register", async (request, response) => {
-	try {
-		validateObjectValues(request.body);
-
-		const { id, name, surnames, email, password, confirmPassword, userType } = request.body;
-
-		validatePassword(password, confirmPassword);
-
-		const dbUser = await getQuery(`SELECT * FROM Usuarios WHERE Cedula_Usuario = ${id} OR Correo = '${email}'`);
-
-		if(dbUser.length !== 0) { return response.json({Error: "El usuario con este numero de cedula o correo ya esta registrado"}); }
-
-		const hash = await bcrypt.hash(password.toString(), salt);
-
-		const query = `
-			INSERT INTO Usuarios (Cedula_Usuario, Nombre, Apellidos, Correo, Contraseña, ID_Tipo_De_Usuario)
-			VALUES
-			(${id},'${name}', '${surnames}', '${email}', '${hash}', ${userType})
-		`;
-
-		await getQuery(query);
-
-		return response.json({Status: "Success", message: "Usuario creado correctamente"});
-	}
-	catch (err) {
-		return response.json({Error: err.message})
-	}
-});
-
-
 
 
 

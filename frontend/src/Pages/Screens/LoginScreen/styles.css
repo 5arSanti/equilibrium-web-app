@@ -1,7 +1,7 @@
 .login-container {
-    width: 50%;
+    width: 100%;
 
-    background-color: var(--pallete-4);
+    background-color: var(--pallete-6);
     backdrop-filter: blur(5px);
 
     border-radius: 20px;
