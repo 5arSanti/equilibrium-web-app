@@ -15,11 +15,11 @@ const IsAdminWrapper = ({children, notFound=false}) => {
         return;
     }
 
-    if (notFound) {
+    if (notFound && !admin) {
         return <NotFoundCard/>
     }
 
-    return(children);
+    return (children);
 }
 
 export { IsAdminWrapper };
