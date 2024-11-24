@@ -15,25 +15,26 @@ const MainServiceScreen = () => {
 
     const { fetchData, responseData } = React.useContext(AppContext);
 
-    const { mainService, asociateServices } = responseData;
+    const { mainService, associateServices } = responseData;
 
     React.useEffect(() => {
         const endpoints = [
             `services/${Service_ID}`,
-            `services/asociate/${Service_ID}`,
+            `services/${Service_ID}/associates`,
         ]
 
         fetchData(endpoints)
-    }, [Service_ID])
+    }, [Service_ID]);
 
     return(
         <AuthWrapper>
-            <StyledSection>
+            <StyledSection image={mainService?.Imagen}>
                 <MainSectionInfoCard
                     white={true}
                     title={mainService?.Nombre_Servicio}
                     subTitle={`Ofrecido por ${mainService?.Entidad}`}
                     icon={Icons[mainService?.Icono]}
+                    
                 />
             </StyledSection>
 
@@ -42,7 +43,7 @@ const MainServiceScreen = () => {
                 <TextCard textAlign="center">{mainService?.Descripcion}</TextCard>
             </SectionWrapper>
 
-            {asociateServices?.map((item, index) => (
+            {associateServices?.map((item, index) => (
                 <StyleCard1 item={item} key={index}/>
             ))}
                 

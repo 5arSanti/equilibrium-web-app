@@ -8,6 +8,7 @@ import { LoginScreen } from "../Screens/LoginScreen";
 import { UsersScreen } from "../Screens/UsersScreen";
 import { AdminDashboardScreen } from "../Screens/AdminDashboardScreen";
 import { MainServiceScreen } from "../Screens/MainServiceScreen";
+import { AsociateServiceScreen } from "../Screens/AsociateServiceScreen";
 
 const AppRoutes = () => {
 
@@ -17,6 +18,7 @@ const AppRoutes = () => {
     let routes = useRoutes([
         {path: "/home", element: <Home/>},
         {path: "/:Service_ID", element: <MainServiceScreen/>},
+        {path: "/:Service_ID/:Associate_ID", element: <AsociateServiceScreen/>},
 
         {path: "/*", element: <Navigate replace to={"/home"}/>},
         

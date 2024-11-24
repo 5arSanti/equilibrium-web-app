@@ -3,39 +3,6 @@ GO
 
 USE EQUILIBRIUM_DB;
 
--- Dias de la semana
-CREATE TABLE Dias_Semana(
-	ID_Dia INT PRIMARY KEY NOT NULL,
-	Nombre VARCHAR(50) NOT NULL
-)
-
-INSERT INTO Dias_Semana (ID_Dia, Nombre) VALUES 
-(1, 'Lunes'),
-(2, 'Martes'),
-(3, 'Miercoles'),
-(4, 'Jueves'),
-(5, 'Viernes'),
-(6, 'Sabado'),
-(7, 'Domingo');
-
-
--- Horarios
-CREATE TABLE Horarios (
-    ID_Horario INT PRIMARY KEY NOT NULL,
-    Hora_Inicio TIME(0) NOT NULL,
-    Hora_Fin TIME(0) NOT NULL,
-);
-
-INSERT INTO Horarios (ID_Horario, Hora_Inicio, Hora_Fin) VALUES
-(1, '08:00', '09:00'),
-(2, '09:00', '10:00'),
-(3, '10:00', '11:00'),
-(4, '11:00', '12:00'),
-(5, '13:00', '14:00'),
-(6, '14:00', '15:00'),
-(7, '15:00', '16:00'),
-(8, '16:00', '17:00');
-
 
 
 
@@ -144,6 +111,38 @@ INSERT INTO Detalles_Servicios_Principales_Servicios_Asociados (ID_Servicio_Prin
 (2, 7),
 (2, 8);
 
+-- Dias de la semana
+CREATE TABLE Dias_Semana(
+	ID_Dia INT PRIMARY KEY NOT NULL,
+	Nombre VARCHAR(50) NOT NULL
+)
+
+INSERT INTO Dias_Semana (ID_Dia, Nombre) VALUES 
+(1, 'Lunes'),
+(2, 'Martes'),
+(3, 'Miercoles'),
+(4, 'Jueves'),
+(5, 'Viernes'),
+(6, 'Sabado'),
+(7, 'Domingo');
+
+
+-- Horarios
+CREATE TABLE Horarios (
+    ID_Horario INT PRIMARY KEY NOT NULL,
+    Hora_Inicio TIME(0) NOT NULL,
+    Hora_Fin TIME(0) NOT NULL,
+);
+
+INSERT INTO Horarios (ID_Horario, Hora_Inicio, Hora_Fin) VALUES
+(1, '08:00', '09:00'),
+(2, '09:00', '10:00'),
+(3, '10:00', '11:00'),
+(4, '11:00', '12:00'),
+(5, '13:00', '14:00'),
+(6, '14:00', '15:00'),
+(7, '15:00', '16:00'),
+(8, '16:00', '17:00');
 
 -- Estado de los horarios
 CREATE TABLE Estado_Horario (
@@ -155,84 +154,27 @@ INSERT INTO Estado_Horario (ID_Estado_Horario, Estado) VALUES
 (0, 'Ocupado'),
 (1, 'Disponible');
 
--- Detalles_Horarios_Servicios_Asociados
-CREATE TABLE Detalles_Horarios_Servicios_Asociados (
+
+
+-- Servicios con horarios
+CREATE TABLE Servicios_Horarios (
+    ID_Servicio_Horario INT PRIMARY KEY IDENTITY(1,1),
     ID_Servicio_Asociado INT FOREIGN KEY REFERENCES Servicios_Asociados(ID_Servicio_Asociado),
+    ID_Dia INT FOREIGN KEY REFERENCES Dias_Semana(ID_Dia),
     ID_Horario INT FOREIGN KEY REFERENCES Horarios(ID_Horario),
-	ID_Estado_Horario INT FOREIGN KEY REFERENCES Estado_Horario(ID_Estado_Horario),
+    ID_Estado_Horario INT FOREIGN KEY REFERENCES Estado_Horario(ID_Estado_Horario)
 );
-INSERT INTO Detalles_Horarios_Servicios_Asociados (ID_Servicio_Asociado, ID_Horario, ID_Estado_Horario) VALUES
-(1, 1, 1),
-(1, 2, 1),
-(1, 3, 1),
-(1, 4, 1),
-(1, 5, 1),
-(1, 6, 1),
-(1, 7, 1),
-(1, 8, 1),
 
-(2, 1, 1),
-(2, 2, 1),
-(2, 3, 1),
-(2, 4, 1),
-(2, 5, 1),
-(2, 6, 1),
-(2, 7, 1),
-(2, 8, 1),
+INSERT INTO Servicios_Horarios (ID_Servicio_Asociado, ID_Dia, ID_Horario, ID_Estado_Horario)
+SELECT 
+    sa.ID_Servicio_Asociado,
+    ds.ID_Dia,
+    h.ID_Horario,
+    1 -- Estado "Disponible"
+FROM Servicios_Asociados sa
+CROSS JOIN Dias_Semana ds
+CROSS JOIN Horarios h;
 
-(3, 1, 1),
-(3, 2, 1),
-(3, 3, 1),
-(3, 4, 1),
-(3, 5, 1),
-(3, 6, 1),
-(3, 7, 1),
-(3, 8, 1),
-
-(4, 1, 1),
-(4, 2, 1),
-(4, 3, 1),
-(4, 4, 1),
-(4, 5, 1),
-(4, 6, 1),
-(4, 7, 1),
-(4, 8, 1),
-
-(5, 1, 1),
-(5, 2, 1),
-(5, 3, 1),
-(5, 4, 1),
-(5, 5, 1),
-(5, 6, 1),
-(5, 7, 1),
-(5, 8, 1),
-
-(6, 1, 1),
-(6, 2, 1),
-(6, 3, 1),
-(6, 4, 1),
-(6, 5, 1),
-(6, 6, 1),
-(6, 7, 1),
-(6, 8, 1),
-
-(7, 1, 1),
-(7, 2, 1),
-(7, 3, 1),
-(7, 4, 1),
-(7, 5, 1),
-(7, 6, 1),
-(7, 7, 1),
-(7, 8, 1),
-
-(8, 1, 1),
-(8, 2, 1),
-(8, 3, 1),
-(8, 4, 1),
-(8, 5, 1),
-(8, 6, 1),
-(8, 7, 1),
-(8, 8, 1);
 
 
 -- Noticias
@@ -287,9 +229,12 @@ CREATE TABLE Estado_Cita (
 )
 
 INSERT INTO Estado_Cita (ID_Estado_Cita, Estado) VALUES 
-(1, 'Programada'),
-(2, 'Finalizada'),
-(3, 'Cancelada');
+(1, 'Pendiente de confirmación'),
+(2, 'Confirmada'),
+(3, 'En curso'),
+(4, 'Finalizada'),
+(5, 'Cancelada'),
+(6, 'Reprogramada');
 
 -- Citas
 CREATE TABLE Citas (
@@ -298,9 +243,33 @@ CREATE TABLE Citas (
     Hora TIME NOT NULL,
     Observaciones TEXT NULL,
     ID_Estado_Cita INT FOREIGN KEY REFERENCES Estado_Cita(ID_Estado_Cita) NOT NULL,
-	ID_Horario INT FOREIGN KEY REFERENCES Horarios(ID_Horario),
+    ID_Horario INT FOREIGN KEY REFERENCES Horarios(ID_Horario),
     ID_Usuario INT FOREIGN KEY REFERENCES Usuarios(Cedula_Usuario),
     ID_Servicio INT FOREIGN KEY REFERENCES Servicios_Asociados(ID_Servicio_Asociado),
+    Fecha_Creacion DATETIME DEFAULT GETDATE() NOT NULL,
+    Fecha_Modificacion DATETIME NULL
+);
+
+CREATE TABLE Historial_Estado_Citas (
+    ID_Historial INT PRIMARY KEY IDENTITY(1,1),
+    ID_Cita INT FOREIGN KEY REFERENCES Citas(ID_Cita),
+    ID_Estado_Cita INT FOREIGN KEY REFERENCES Estado_Cita(ID_Estado_Cita),
+    Fecha_Cambio DATETIME DEFAULT GETDATE() NOT NULL,
+    Observaciones TEXT NULL
 );
 
 GO
+
+CREATE TRIGGER trg_AgregarHistorialEstado
+ON Citas
+AFTER UPDATE
+AS
+BEGIN
+    INSERT INTO Historial_Estado_Citas (ID_Cita, ID_Estado_Cita, Observaciones)
+    SELECT 
+        ID_Cita, 
+        ID_Estado_Cita,
+        'Cambio automático'
+    FROM inserted;
+END;
+

@@ -34,6 +34,8 @@
     --black-025: rgba(0,0,0,0.25);
     --black-05: rgba(0,0,0,0.5);
 
+    --green-bg: #e6ffe2;
+    --red-bg: #ffe5e3;
 }
 
 html {

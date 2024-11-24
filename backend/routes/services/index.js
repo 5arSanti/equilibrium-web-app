@@ -55,11 +55,11 @@ router.get("/:ID_Service", async (request, response) => {
 	}
 });
 
-router.get("/asociate/:ID_Service", async (request, response) => {
+router.get("/:ID_Service/associates", async (request, response) => {
 	try {
 		const { ID_Service } = request.params;
 
-		const asociateServices = await getQuery(`
+		const associateServices = await getQuery(`
 			SELECT
 				sa.ID_Servicio_Asociado AS id,
 				UPPER(sa.Nombre) AS Nombre_Servicio,
@@ -78,7 +78,7 @@ router.get("/asociate/:ID_Service", async (request, response) => {
 
 
 		return response.status(200).json({
-			asociateServices: asociateServices,
+			associateServices: associateServices,
 		});
 	}
 	catch (err) {

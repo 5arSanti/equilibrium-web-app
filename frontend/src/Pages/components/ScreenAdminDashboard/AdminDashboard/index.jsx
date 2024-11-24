@@ -32,7 +32,7 @@ const AdminDashboard = () => {
 
     return(
         <SectionWrapper>
-            <SectionTitle subTitle="Creacion o registro de informacion" title={`Bienvenido ${user?.Nombre}`}/>
+            <SectionTitle subTitle="Creacion o registro de informacion" title={`Bienvenido/a ${user?.Nombre}`}/>
 
             <TextCard textAlign="center">
                 En esta seccion podras gestionar la informacion del sistema, como la creacion de servicios, entidades, categorias, etc.
