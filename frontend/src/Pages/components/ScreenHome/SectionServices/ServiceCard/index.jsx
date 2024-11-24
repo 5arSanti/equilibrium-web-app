@@ -8,7 +8,7 @@ import { Icons } from "../../../../../utils/Icons";
 
 const ServiceCard = ({item={}}) => {
     return(
-        <Link className="service-container" to={item.Enlace}>
+        <Link className="service-container" to={`/${item.Enlace}`}>
             <WrapperContainer2 
                 flexDirection="column" 
                 justifyContent="center" 

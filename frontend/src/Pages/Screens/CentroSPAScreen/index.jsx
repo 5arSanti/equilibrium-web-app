@@ -12,7 +12,8 @@ const CentroSPAScreen = () => {
 
     React.useEffect(() => {
         const endpoints = [
-            `services/1`
+            `services/1`,
+            `services/asociate/1`,
         ]
 
         fetchData(endpoints)

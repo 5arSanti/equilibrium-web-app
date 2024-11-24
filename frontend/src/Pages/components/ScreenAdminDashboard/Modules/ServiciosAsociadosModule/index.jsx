@@ -21,7 +21,7 @@ const ServiciosAsociadosModule = () => {
 
     React.useEffect(() => {
         const endpoints = [
-            `/services/${selectedOption}`,
+            `/services/asociate/${selectedOption}`,
         ]
 
         if (selectedOption) {

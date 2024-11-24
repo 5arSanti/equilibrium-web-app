@@ -45,6 +45,20 @@ router.get("/:ID_Service", async (request, response) => {
 			WHERE sp.ID_Servicio_Principal = ${ID_Service}
 		`);
 
+
+		return response.status(200).json({
+			mainService: mainService[0],
+		});
+	}
+	catch (err) {
+		return response.status(500).json({Error: err.message});
+	}
+});
+
+router.get("/asociate/:ID_Service", async (request, response) => {
+	try {
+		const { ID_Service } = request.params;
+
 		const asociateServices = await getQuery(`
 			SELECT
 				sa.ID_Servicio_Asociado AS id,
@@ -64,7 +78,6 @@ router.get("/:ID_Service", async (request, response) => {
 
 
 		return response.status(200).json({
-			mainService: mainService[0],
 			asociateServices: asociateServices,
 		});
 	}

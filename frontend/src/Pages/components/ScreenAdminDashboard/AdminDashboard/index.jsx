@@ -8,12 +8,12 @@ import { AdminOptionButtons } from "../AdminOptionButtons";
 import { EntidadesModule } from "../Modules/EntidadesModule";
 import { ButtonCard } from "../../ButtonCard";
 import { SubTitle } from "../../SubTitle";
+import { ServiciosModule } from "../Modules/ServiciosModule";
+import { ServiciosAsociadosModule } from "../Modules/ServiciosAsociadosModule";
 
 import { IoMdClose } from "react-icons/io";
 
 import "./styles.css";
-import { ServiciosModule } from "../Modules/ServiciosModule";
-import { ServiciosAsociadosModule } from "../Modules/ServiciosAsociadosModule";
 
 
 const AdminDashboard = () => {
