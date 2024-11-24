@@ -6,6 +6,8 @@ import { Home } from "../Screens/Home";
 import { RegisterScreen } from "../Screens/RegisterScreen";
 import { LoginScreen } from "../Screens/LoginScreen";
 import { UsersScreen } from "../Screens/UsersScreen";
+import { CentroSPAScreen } from "../Screens/CentroSPAScreen";
+import { AdminDashboardScreen } from "../Screens/AdminDashboardScreen";
 
 const AppRoutes = () => {
 
@@ -14,10 +16,11 @@ const AppRoutes = () => {
 
     let routes = useRoutes([
         {path: "/home", element: <Home/>},
-        // {path: "/*", element: <Navigate replace to={"/home"}/>},
+        {path: "/estetica-spa", element: <CentroSPAScreen/>},
+
+        {path: "/*", element: <Navigate replace to={"/home"}/>},
         
-        
-        
+        {path: "/admin-dash", element: <AdminDashboardScreen/>},
         {path: "/users", element: <UsersScreen/>},
         {path: "/register", element: <RegisterScreen/>},
 

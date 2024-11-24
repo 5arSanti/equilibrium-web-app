@@ -12,6 +12,8 @@ const versionRouter = require("./version/index.js");
 
 const servicesRouter = require("./services/index.js");
 
+const entidadesRouter = require("./entidades/index.js");
+
 
 const routerApi = (app) => {
 	const router = express.Router();
@@ -24,6 +26,8 @@ const routerApi = (app) => {
 	router.use("/version", versionRouter);
 
 	router.use("/services", servicesRouter);
+
+	router.use("/entidades", entidadesRouter);
 }
 
 module.exports = routerApi;

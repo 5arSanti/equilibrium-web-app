@@ -3,13 +3,16 @@ import { AuthWrapper, IsAuthWrapper } from "../../components/AuthWrapper";
 import { MainSectionInfoCard } from "../../components/MainSectionInfoCard";
 import { StyledSection } from "../../components/StyledSection";
 import { AppContext } from "../../../Context";
+import { Icons } from "../../../utils/Icons";
 
 const CentroSPAScreen = () => {
-    const { fetchData } = React.useContext(AppContext);
+    const { fetchData, responseData } = React.useContext(AppContext);
+
+    const { mainService, asociateServices } = responseData;
 
     React.useEffect(() => {
         const endpoints = [
-            ``
+            `services/1`
         ]
 
         fetchData(endpoints)
@@ -17,19 +20,16 @@ const CentroSPAScreen = () => {
 
     return(
         <AuthWrapper>
-            <IsAuthWrapper notFound={true}>
-                <StyledSection>
-                    <MainSectionInfoCard
-                        title=""
-                        subTitle="Gestion de informacion de usuarios precisa"
-                        icon={<FaUsers/>}
-                    />
-                </StyledSection>
+            <StyledSection>
+                <MainSectionInfoCard
+                    white={true}
+                    title={mainService?.Nombre_Servicio}
+                    subTitle={mainService?.Descripcion}
+                    icon={Icons[mainService?.Icono]}
+                />
+            </StyledSection>
 
-                <SectionActualUser/>
-
-                <SectionUsersList/>
-            </IsAuthWrapper>
+                
         </AuthWrapper>
     );
 }

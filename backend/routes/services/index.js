@@ -1,5 +1,5 @@
 const express = require("express");
-const { getQuery, valuesQuery } = require("../../database/query");
+const { getQuery } = require("../../database/query");
 
 const router = express.Router();
 
@@ -54,7 +54,7 @@ router.get("/:ID_Service", async (request, response) => {
 				sa.Precio,
 				cs.Nombre AS Categoria
 
-			FROM Detalles_Servicios_Principales_Serivicos_Asociados dspsa
+			FROM Detalles_Servicios_Principales_Servicios_Asociados dspsa
 
 			JOIN Servicios_Asociados sa ON dspsa.ID_Servicio_Asociado = sa.ID_Servicio_Asociado
 			JOIN Categorias_Servicios cs ON sa.ID_Categoria = cs.ID_Categoria
@@ -64,7 +64,6 @@ router.get("/:ID_Service", async (request, response) => {
 
 
 		return response.status(200).json({
-			Status: "Success",
 			mainService: mainService[0],
 			asociateServices: asociateServices,
 		});

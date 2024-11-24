@@ -8,6 +8,8 @@ import { FaUser, FaUsers } from "react-icons/fa6";
 import { AppContext } from "../../../Context";
 import { NavButtons } from "../NavButtons";
 
+import { RiAdminLine } from "react-icons/ri";
+
 import "./styles.css";
 
 
@@ -23,7 +25,7 @@ const NavOptions = ({className="nav-buttons animacion2 pl2"}) => {
             }
 
             <IsAuthWrapper>
-                <Link to={"/users"} className={`${className}`}>Usuarios <FaUsers/></Link>
+                <Link to={"/admin-dash"} className={`${className}`}>Administracion <RiAdminLine/></Link>
                 
                 <button  
                     className={`${className}`} 
