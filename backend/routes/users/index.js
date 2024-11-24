@@ -9,6 +9,7 @@ const { validateObjectValues } = require("../../Utils/Validate/validateObjectVal
 const { validatePassword } = require("../../Utils/Validate/validatePassword");
 const { verifyUser } = require("../../middlewares/verifyUser");
 const { verifyAdmin } = require("../../middlewares/verifyAdmin");
+const { compressImage } = require("../../Utils/Images/compressImage");
 
 
 router.get("/", verifyUser, verifyAdmin, async (request, response) => {
@@ -128,10 +129,12 @@ router.post("/new", async (request, response) => {
 
 		const hash = await bcrypt.hash(String(Contraseña), salt);
 
+		const compressedImage = await compressImage(Imagen);
+
 		const query = `
 			INSERT INTO Usuarios (Cedula_Usuario, Nombre, Apellidos, Correo, Contraseña, Imagen, ID_Genero)
 			VALUES
-			(${Cedula_Usuario},'${Nombre}', '${Apellidos}', '${Correo}', '${hash}', ${Imagen}, ${ID_Genero})
+			(${Cedula_Usuario},'${Nombre}', '${Apellidos}', '${Correo}', '${hash}', 0x${compressedImage}, ${ID_Genero})
 		`;
 
 		await getQuery(query);
