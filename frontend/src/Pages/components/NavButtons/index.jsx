@@ -12,7 +12,7 @@ const NavButtons = ({className="nav-buttons animacion2 pl2"}) => {
             <Link 
                 className={className}
                 key={index} 
-                to={item.Enlace}
+                to={`${item.id}`}
             >
                 {item.Nombre_Servicio}
                 {Icons[item.Icono]}

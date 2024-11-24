@@ -32,9 +32,9 @@
     z-index: 1;
 
     background: rgba(0,0,0, 1);
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 10%, transparent 100%);
-    background-size: 250% auto;
-    background-position: 200% auto;
+    background: linear-gradient(90deg, var(--pallete-1) 0%, transparent 100%);
+    background-size: 150% auto;
+    background-position: 150% auto;
 
     transition: background 0.75s ease;
 }

@@ -1,0 +1,23 @@
+.slide-button {
+    transition: all 0.3s ease;
+    
+    width: auto;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    opacity: 0;
+
+    svg {
+        width: 40px;
+        height: 40px;
+    
+        fill: var(--white);
+    }
+}
+
+.style-card2:hover .slide-button {
+    opacity: 1;
+}
