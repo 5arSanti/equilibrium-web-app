@@ -11,6 +11,7 @@ import { RiAdminLine } from "react-icons/ri";
 
 import "./styles.css";
 import { IsAdminWrapper } from "../AuthWrapper/IsAdminWrapper";
+import { IsAuthWrapper } from "../AuthWrapper/IsAuthWrapper";
 
 
 const NavOptions = ({className="nav-buttons animacion2 pl2"}) => {
@@ -26,7 +27,9 @@ const NavOptions = ({className="nav-buttons animacion2 pl2"}) => {
 
             <IsAdminWrapper>
                 <Link to={"/admin-dash"} className={`${className}`}>Administracion <RiAdminLine/></Link>
-                
+            </IsAdminWrapper>
+            
+            <IsAuthWrapper>
                 <button  
                     className={`${className}`} 
                     onClick={handleLogout}
@@ -34,7 +37,7 @@ const NavOptions = ({className="nav-buttons animacion2 pl2"}) => {
                     Cerrar Sesión
                     <IoLogOutOutline/>
                 </button>
-            </IsAdminWrapper>
+            </IsAuthWrapper>
         </div>
     )
 }

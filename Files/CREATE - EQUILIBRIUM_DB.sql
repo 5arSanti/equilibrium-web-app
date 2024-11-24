@@ -4,8 +4,6 @@ GO
 USE EQUILIBRIUM_DB;
 
 
-
-
 -- Tipos de Usuarios
 CREATE TABLE Tipo_Usuarios (
 	ID_Tipo_Usuarios INT PRIMARY KEY,
