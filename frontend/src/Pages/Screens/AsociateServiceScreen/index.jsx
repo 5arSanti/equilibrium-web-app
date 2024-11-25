@@ -18,7 +18,7 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { SchedulesModule } from "../../components/SchedulesModule";
 
 const AsociateServiceScreen = () => {
-    const { Associate_ID } = useParams();
+    const { Service_ID, Associate_ID } = useParams();
 
     const { fetchData, responseData } = React.useContext(AppContext);
 
@@ -26,6 +26,7 @@ const AsociateServiceScreen = () => {
 
     React.useEffect(() => {
         const endpoints = [
+            `services/${Service_ID}/associates`,
             `/associates/${Associate_ID}`,
             `/associates/${Associate_ID}/schedules`,
         ]
@@ -72,6 +73,7 @@ const AsociateServiceScreen = () => {
                     </GridContainer>
 
                     <SchedulesModule 
+                        serviceID={Associate_ID}
                         associateSchedules={associateSchedules}
                         schedulesStates={schedulesStates}
                     />

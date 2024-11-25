@@ -7,7 +7,11 @@
     background-color: var(--pallete-1);
     p {color: var(--white) !important;} &
     span {color: var(--white) !important;} 
-
+}
+.selected {
+    background-color: var(--pallete-1);
+    p {color: var(--white) !important;} &
+    span {color: var(--white) !important;} 
 }
 
 .green-bg {

@@ -1,10 +1,8 @@
-import moment from "moment";
-
-import "./styles.css"
 import { WrapperContainer2 } from "../../WrapperContainers";
-import { SpanCard, TextCard } from "../../TextComponents";
+import { handleInputChange } from "../../../../utils/handleInputChange";
+import { ScheduleCard } from "./ScheduleCard";
 
-const SchedulesTable = ({ schedulesByDay = {} }) => {
+const SchedulesTable = ({ schedulesByDay = {}, setState, selectedValue }) => {
     const headers = Object.keys(schedulesByDay);
 
     return (
@@ -19,32 +17,30 @@ const SchedulesTable = ({ schedulesByDay = {} }) => {
                 </tr>
             </thead>
             <tbody>
-                {headers?.map((day, index) => (
-                    <td key={index} style={{padding: 0}}>
-                        <WrapperContainer2 
-                            flexDirection="column"
-                            gap={0}
-                            padding={0}
-                        >
-                            {schedulesByDay[day]?.map((schedule, idx) => (
-                                <WrapperContainer2 key={idx}
-                                    flexDirection="column"
-                                    gap={0}
-                                    padding={5}
-                                    className={`schedule-card ${schedule?.ID_Estado_Horario !== 1 && "red-bg"}`}
-                                >
-                                    <TextCard fontSize={14} textAlign="center">
-                                        <SpanCard fontSize={12}>Hora:</SpanCard> <br />
-                                        {moment(schedule.Hora_Inicio, "HH:mm").format("HH:mm A")} - {moment(schedule.Hora_Fin, "HH:mm A").format("HH:mm A")}
-                                    </TextCard>
-                                    <TextCard textAlign="center">
-                                        <SpanCard fontSize={12}>{schedule.Estado}</SpanCard>
-                                    </TextCard>
-                                </WrapperContainer2>
-                            ))}
-                        </WrapperContainer2>
-                    </td>
-                ))}
+                <tr>
+                    {headers?.map((day, index) => (
+                        <td key={index} style={{padding: 0}}>
+                            <WrapperContainer2 
+                                flexDirection="column"
+                                gap={0}
+                                padding={0}
+                            >
+                                {schedulesByDay[day]?.map((schedule, idx) => (
+                                    <div 
+                                        key={idx}
+                                        style={{width: "100%", height: "100%"}}
+                                        onClick={() => handleInputChange("ID_Servicio_Horario", schedule.id, setState)}
+                                    >
+                                        <ScheduleCard
+                                            schedule={schedule}
+                                            selectedValue={selectedValue}
+                                        />
+                                    </div>
+                                ))}
+                            </WrapperContainer2>
+                        </td>
+                    ))}
+                </tr>
             </tbody>
         </table>
     );

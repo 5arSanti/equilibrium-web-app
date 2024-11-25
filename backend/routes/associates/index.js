@@ -59,6 +59,7 @@ router.get("/:Associate_ID/schedules", async (request, response) => {
 				acc[schedule.Dia] = [];
 			}
 			acc[schedule.Dia].push({
+				id: schedule.id,
 				Hora_Inicio: schedule.Hora_Inicio,
 				Hora_Fin: schedule.Hora_Fin,
 				ID_Estado_Horario: schedule.ID_Estado_Horario,

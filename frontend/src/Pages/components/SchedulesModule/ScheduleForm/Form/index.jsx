@@ -7,9 +7,12 @@ import { ButtonCard } from "../../../ButtonCard";
 import { AppContext } from "../../../../../Context";
 
 import "./styles.css"
+import { ScheduleCard } from "../../SchedulesTable/ScheduleCard";
 
-const Form = ({ state, setState }) => {
-    const { associateServices } = React.useContext(AppContext).responseData;
+const Form = ({ state={}, setState }) => {
+    const { associateServices, schedule } = React.useContext(AppContext).responseData;
+
+    console.log(schedule)
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -18,14 +21,20 @@ const Form = ({ state, setState }) => {
     return (
         <form className="form-container" onSubmit={handleSubmit}>
             <WrapperContainer2 justifyContent="start" alignItems="center" padding={40} gap={20} flexDirection="column">
+                <OptionInputCard
+                    none={true}
+                    id={"associate-service"}
+                    label={"Seleccione el servicio"}
+                    array={associateServices}
+                    defaultValue={state.ID_Servicio}
+                />
+
+                <ScheduleCard
+                    schedule={schedule}
+                    height="auto"
+                />
+                
                 <GridContainer className="grid-1-1" padding={0}>
-                    <OptionInputCard
-                        none={true}
-                        id={"associate-service"}
-                        label={"Seleccione el servicio"}
-                        array={associateServices}
-                        defaultValue={state.ID_Servicio}
-                    />
                     <OptionInputCard
                         none={true}
                         id={"process"}
