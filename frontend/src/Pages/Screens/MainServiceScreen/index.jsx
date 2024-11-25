@@ -31,7 +31,7 @@ const MainServiceScreen = () => {
             <StyledSection image={mainService?.Imagen}>
                 <MainSectionInfoCard
                     white={true}
-                    title={mainService?.Nombre_Servicio}
+                    title={mainService?.Nombre}
                     subTitle={`Ofrecido por ${mainService?.Entidad}`}
                     icon={Icons[mainService?.Icono]}
                     

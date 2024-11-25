@@ -8,7 +8,7 @@ router.get("/", async (request, response) => {
 		const mainServices = await getQuery(`
 			SELECT
 				sp.ID_Servicio_Principal AS id,
-				UPPER(sp.Nombre) AS Nombre_Servicio,
+				UPPER(sp.Nombre) AS Nombre,
 				sp.Descripcion,
 				sp.Icono,
 				sp.Enlace,
@@ -33,7 +33,7 @@ router.get("/:ID_Service", async (request, response) => {
 		const mainService = await getQuery(`
 			SELECT
 				sp.ID_Servicio_Principal AS id,
-				UPPER(sp.Nombre) AS Nombre_Servicio,
+				UPPER(sp.Nombre) AS Nombre,
 				sp.Descripcion,
 				sp.Icono,
 				sp.Enlace,
@@ -62,7 +62,7 @@ router.get("/:ID_Service/associates", async (request, response) => {
 		const associateServices = await getQuery(`
 			SELECT
 				sa.ID_Servicio_Asociado AS id,
-				UPPER(sa.Nombre) AS Nombre_Servicio,
+				UPPER(sa.Nombre) AS Nombre,
 				sa.Descripcion,
 				sa.Imagen,
 				sa.Precio,

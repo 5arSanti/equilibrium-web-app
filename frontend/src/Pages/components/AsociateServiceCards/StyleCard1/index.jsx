@@ -12,7 +12,7 @@ import "./styles.css";
 const StyleCard1 = ({item={}}) => {
 
     return(
-        <Link to={`${item.id}`} title={`Ver mas detalles de ${item.Nombre_Servicio}`}>
+        <Link to={`${item.id}`} title={`Ver mas detalles de ${item.Nombre}`}>
             <WrapperContainer2
                 padding={0} 
                 gap={0} 
@@ -37,7 +37,7 @@ const StyleCard1 = ({item={}}) => {
                             className="animacion"
                             width="auto"
                         >
-                            {item.Nombre_Servicio}
+                            {item.Nombre}
                         </Title>
 
                         <TextCard white={true}>{item.Descripcion}</TextCard>

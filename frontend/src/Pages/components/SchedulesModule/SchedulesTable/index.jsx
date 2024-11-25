@@ -1,8 +1,8 @@
 import moment from "moment";
-import { SpanCard, TextCard } from "../TextComponents";
-import { WrapperContainer2 } from "../WrapperContainers";
 
 import "./styles.css"
+import { WrapperContainer2 } from "../../WrapperContainers";
+import { SpanCard, TextCard } from "../../TextComponents";
 
 const SchedulesTable = ({ schedulesByDay = {} }) => {
     const headers = Object.keys(schedulesByDay);

@@ -20,7 +20,7 @@ const ServiceCard = ({item={}}) => {
 
                 <WrapperContainer2 flexDirection="column" gap={0} padding={0}>
                     <TextCard fontSize={14}>{item.Entidad}</TextCard>
-                    <SubTitle>{item.Nombre_Servicio}</SubTitle>
+                    <SubTitle>{item.Nombre}</SubTitle>
 
                 </WrapperContainer2>
                 <TextCard fontSize={16}>{item.Descripcion}</TextCard>

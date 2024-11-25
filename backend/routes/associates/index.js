@@ -10,7 +10,7 @@ router.get("/:Associate_ID", async (request, response) => {
 		const associateService = await getQuery(`
 			SELECT
 				sa.ID_Servicio_Asociado AS id,
-				UPPER(sa.Nombre) AS Nombre_Servicio,
+				UPPER(sa.Nombre) AS Nombre,
 				sa.Descripcion,
 				sa.Imagen,
 				sa.Precio,

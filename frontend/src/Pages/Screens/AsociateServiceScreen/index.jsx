@@ -7,9 +7,6 @@ import { MainSectionInfoCard } from "../../components/MainSectionInfoCard";
 import { Icons } from "../../../utils/Icons";
 import { SectionWrapper } from "../../components/SectionWrapper";
 import { SectionTitle } from "../../components/SectionWrapper/SectionTitle";
-import { TextCard } from "../../components/TextComponents";
-import { TableContainer } from "../../components/TableContainer";
-import { SchedulesTable } from "../../components/SchedulesTable";
 import { GridContainer } from "../../components/GridContainer";
 import { WrapperContainer2 } from "../../components/WrapperContainers";
 import { SubTitle } from "../../components/SubTitle";
@@ -18,13 +15,14 @@ import { LogInfoCard } from "../../components/LogInfoCard";
 import { formatNumbers } from "../../../utils/Format/formatNumbers";
 import { MdSavings } from "react-icons/md";
 import { BiCategoryAlt } from "react-icons/bi";
+import { SchedulesModule } from "../../components/SchedulesModule";
 
 const AsociateServiceScreen = () => {
     const { Associate_ID } = useParams();
 
     const { fetchData, responseData } = React.useContext(AppContext);
 
-    const { associateService, associateSchedules } = responseData;
+    const { associateService, associateSchedules, schedulesStates } = responseData;
 
     React.useEffect(() => {
         const endpoints = [
@@ -40,7 +38,7 @@ const AsociateServiceScreen = () => {
             <StyledSection image={associateService?.Imagen}>
                 <MainSectionInfoCard
                     white={true}
-                    title={associateService?.Nombre_Servicio}
+                    title={associateService?.Nombre}
                     subTitle={`Ofrecido por ${associateService?.Entidad}`}
                     icon={Icons[associateService?.Icono]}
                 />
@@ -50,7 +48,7 @@ const AsociateServiceScreen = () => {
                 <SectionTitle subTitle={`Le ofrecemos lo que usted necesita`} title="Sobre el servicio"/>
                 
                 <WrapperContainer2 justifyContent="start" alignItems="start" flexDirection="column" gap={35}>
-                    <SubTitle fontSize={24}>{associateService?.Nombre_Servicio}</SubTitle>
+                    <SubTitle fontSize={24}>{associateService?.Nombre}</SubTitle>
                     <SubInfoCard 
                         titleSize={18} 
                         textSize={16} 
@@ -73,9 +71,11 @@ const AsociateServiceScreen = () => {
                         
                     </GridContainer>
 
-                    <SubTitle fontSize={24}>Horarios</SubTitle>
-
-                    <SchedulesTable schedulesByDay={associateSchedules}/>
+                    <SchedulesModule 
+                        associateSchedules={associateSchedules}
+                        schedulesStates={schedulesStates}
+                    />
+                    
                 </WrapperContainer2>
 
             </SectionWrapper>

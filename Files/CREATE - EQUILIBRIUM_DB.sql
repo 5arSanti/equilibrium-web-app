@@ -241,47 +241,21 @@ CREATE TABLE Estado_Cita (
 )
 
 INSERT INTO Estado_Cita (ID_Estado_Cita, Estado) VALUES 
-(1, 'Pendiente de confirmación'),
-(2, 'Confirmada'),
-(3, 'En curso'),
-(4, 'Finalizada'),
-(5, 'Cancelada'),
-(6, 'Reprogramada');
+(1, 'Programada'),
+(2, 'En curso'),
+(3, 'Finalizada'),
+(4, 'Cancelada'),
+(5, 'Reprogramada');
 
 -- Citas
 CREATE TABLE Citas (
     ID_Cita INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     Fecha DATE NOT NULL,
-    Hora TIME NOT NULL,
     Observaciones TEXT NULL,
     ID_Estado_Cita INT FOREIGN KEY REFERENCES Estado_Cita(ID_Estado_Cita) NOT NULL,
-    ID_Horario INT FOREIGN KEY REFERENCES Horarios(ID_Horario),
+    ID_Servicio_Horario INT FOREIGN KEY REFERENCES Servicios_Horarios(ID_Servicio_Horario),
     ID_Usuario INT FOREIGN KEY REFERENCES Usuarios(Cedula_Usuario),
     ID_Servicio INT FOREIGN KEY REFERENCES Servicios_Asociados(ID_Servicio_Asociado),
     Fecha_Creacion DATETIME DEFAULT GETDATE() NOT NULL,
     Fecha_Modificacion DATETIME NULL
 );
-
-CREATE TABLE Historial_Estado_Citas (
-    ID_Historial INT PRIMARY KEY IDENTITY(1,1),
-    ID_Cita INT FOREIGN KEY REFERENCES Citas(ID_Cita),
-    ID_Estado_Cita INT FOREIGN KEY REFERENCES Estado_Cita(ID_Estado_Cita),
-    Fecha_Cambio DATETIME DEFAULT GETDATE() NOT NULL,
-    Observaciones TEXT NULL
-);
-
-GO
-
-CREATE TRIGGER trg_AgregarHistorialEstado
-ON Citas
-AFTER UPDATE
-AS
-BEGIN
-    INSERT INTO Historial_Estado_Citas (ID_Cita, ID_Estado_Cita, Observaciones)
-    SELECT 
-        ID_Cita, 
-        ID_Estado_Cita,
-        'Cambio automático'
-    FROM inserted;
-END;
-

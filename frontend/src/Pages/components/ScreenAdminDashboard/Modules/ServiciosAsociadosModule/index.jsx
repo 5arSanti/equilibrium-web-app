@@ -38,7 +38,7 @@ const ServiciosAsociadosModule = () => {
                         title={item.Nombre}
                         onClick={() => setSelectedOption(item.id)}
                     >
-                        {item.Nombre_Servicio}
+                        {item.Nombre}
                     </ButtonCard>
                 ))}
             </WrapperContainer2>
