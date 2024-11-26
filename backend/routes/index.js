@@ -20,6 +20,7 @@ const genresRouter = require("./genres/index.js");
 
 const schedulesRouter = require("./schedules/index.js");
 
+const appointmentRouter = require("./appointment/index.js");
 
 const routerApi = (app) => {
 	const router = express.Router();
@@ -40,6 +41,8 @@ const routerApi = (app) => {
 	router.use("/genres", genresRouter);
 
 	router.use("/schedules", schedulesRouter)
+
+	router.use("/appointment", appointmentRouter)
 }
 
 module.exports = routerApi;

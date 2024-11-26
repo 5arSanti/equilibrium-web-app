@@ -22,7 +22,7 @@ const AsociateServiceScreen = () => {
 
     const { fetchData, responseData } = React.useContext(AppContext);
 
-    const { associateService, associateSchedules, schedulesStates } = responseData;
+    const { associateService, associateSchedules } = responseData;
 
     React.useEffect(() => {
         const endpoints = [
@@ -75,7 +75,6 @@ const AsociateServiceScreen = () => {
                     <SchedulesModule 
                         serviceID={Associate_ID}
                         associateSchedules={associateSchedules}
-                        schedulesStates={schedulesStates}
                     />
                     
                 </WrapperContainer2>

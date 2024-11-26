@@ -74,7 +74,7 @@ const OptionInputCard = ({
     );
 }
 
-const TextAreaCard = ({id, label, placeholder="placeholder", onChange, required=true, stateKey, defaultValue=""}) => {
+const TextAreaCard = ({id, label, placeholder="placeholder", onChange, required=true, defaultValue=""}) => {
     return(
         <div className="input-container">
             <label htmlFor={id}>{label} {required && "*"}</label>
@@ -83,7 +83,7 @@ const TextAreaCard = ({id, label, placeholder="placeholder", onChange, required=
                 name={id}
                 id={id}
                 onChange={(event) => {onChange(event.target.value)}}
-                required
+                required={required}
                 defaultValue={defaultValue}
             />
         </div>

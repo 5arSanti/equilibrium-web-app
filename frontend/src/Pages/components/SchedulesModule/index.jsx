@@ -9,19 +9,26 @@ const SchedulesModule = ({ serviceID, associateSchedules }) => {
     const { user, fetchData } = React.useContext(AppContext);
 
     const [ values, setValues ] = React.useState({
-        Fecha: null,
         Observaciones: null,
         ID_Servicio_Horario: null,
-        ID_Usuario: user?.id,
+        ID_Usuario: user?.Cedula_Usuario || null,
         ID_Servicio: serviceID,
     })
 
-    console.log(values)
+    React.useEffect(() => {
+        if (user?.Cedula_Usuario !== values.ID_Usuario) {
+            setValues(prevValues => ({
+                ...prevValues,
+                ID_Usuario: user.Cedula_Usuario,
+            }));
+        }
+    }, [user, values.ID_Usuario]);
 
     React.useEffect(() => {
         const endpoints = [
             `/schedules/${values?.ID_Servicio_Horario}`
         ]
+
 
         if (serviceID) {
             fetchData(endpoints)

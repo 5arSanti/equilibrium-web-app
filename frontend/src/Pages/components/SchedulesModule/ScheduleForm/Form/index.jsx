@@ -10,12 +10,16 @@ import "./styles.css"
 import { ScheduleCard } from "../../SchedulesTable/ScheduleCard";
 import { TextCard } from "../../../TextComponents";
 import { handleInputChange } from "../../../../../utils/handleInputChange";
+import { handlePostData } from "../../../../../utils/handleData/handlePostData";
 
 const Form = ({ state={}, setState }) => {
+
     const { associateServices, schedule } = React.useContext(AppContext).responseData;
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+
+        await handlePostData(event, state, "/appointment");
     }
 
     return (

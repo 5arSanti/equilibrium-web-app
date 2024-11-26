@@ -12,12 +12,13 @@ const handlePostData = async (event, object, endpoint, callback = reloadLocation
         const options = {
             method: 'POST', 
             mode:'cors',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 ...headers
             },
-            body: JSON.stringify(object)
+            body: JSON.stringify(object),
         };
       
         const response = await fetch(url, options);
