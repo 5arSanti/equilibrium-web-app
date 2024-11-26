@@ -1,8 +1,12 @@
-import React from "react";
+import "./styles.css"
 
-const ImageParserCard = ({ data }) => {
+const ImageParserCard = ({ data={}, style=false }) => {
     return(
-        <img src={`data:${data?.mimeType};base64,${data?.Imagen}`} alt={"Alternative-image"} />
+        <img 
+            src={`data:${data?.mimeType};base64,${data?.Imagen}`} 
+            alt={"Alternative-image"} 
+            className={`image-parsed-card ${style && "image-style"}`}
+        />
     );
 }
 

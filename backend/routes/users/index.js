@@ -103,16 +103,20 @@ router.get("/:Cedula_Usuario", verifyUser, async (request, response) => {
 				u.Contraseña,
 				u.Imagen,
 				tu.ID_Tipo_Usuarios,
-				tu.Nombre AS Tipo_Usuario
+				tu.Nombre AS Tipo_Usuario,
+				g.ID_Genero,
+				g.Genero
+
 			FROM Usuarios u
 			JOIN Tipo_Usuarios tu ON u.ID_Tipo_De_Usuario = tu.ID_Tipo_Usuarios
+			JOIN Generos g ON u.ID_Genero = g.ID_Genero
 
 			WHERE u.Cedula_Usuario = ${Cedula_Usuario}
 		`;
 
 		const user = await getQuery(query)
 
-		return response.json({user: {
+		return response.json({userInfo: {
 			...user[0],
 			Imagen: user[0].Imagen.toString("base64"),
 			mimeType: 'image/png'

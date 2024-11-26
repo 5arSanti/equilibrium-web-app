@@ -2,18 +2,26 @@
 import { SpanCard, TextCard } from "../TextComponents";
 import { WrapperContainer2 } from "../WrapperContainers";
 
+import "./styles.css"
 
 const SubInfoCard = ({
     subTitle, 
     text, 
-    textAlign="center",
-    titleSize=10,
-    textSize=14
+    textAlign="start",
+    titleSize=12,
+    textSize=18
 }) => {
     return (
-        <WrapperContainer2 flexDirection="column" padding={0} gap={5} height="auto">
-            <TextCard textAlign={textAlign}><SpanCard fontSize={titleSize}>{subTitle}</SpanCard></TextCard>
-            <TextCard fontSize={textSize} className={"italic"} textAlign={textAlign}>{text}</TextCard>
+        <WrapperContainer2 flexDirection="column" padding={"15px 25px"} gap={5} height="auto" className="sub-info-card-container">
+            <TextCard textAlign={textAlign}>
+                <SpanCard fontSize={titleSize}>
+                    {subTitle}
+                </SpanCard>
+            </TextCard>
+
+            <TextCard fontSize={textSize} className={"italic bold"} textAlign={textAlign}>
+                {text}
+            </TextCard>
         </WrapperContainer2>
     );
 }
