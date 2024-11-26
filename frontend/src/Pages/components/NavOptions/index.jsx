@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import { handleLogout } from "../../../utils/handleData/handleLogout";
 import { IoLogOutOutline } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
+import { FaUserAlt } from "react-icons/fa";
 import { AppContext } from "../../../Context";
 import { NavButtons } from "../NavButtons";
 
 import { RiAdminLine } from "react-icons/ri";
-
-import "./styles.css";
 import { IsAdminWrapper } from "../AuthWrapper/IsAdminWrapper";
 import { IsAuthWrapper } from "../AuthWrapper/IsAuthWrapper";
+
+import "./styles.css";
 
 
 const NavOptions = ({className="nav-buttons animacion2 pl2"}) => {
@@ -24,6 +25,10 @@ const NavOptions = ({className="nav-buttons animacion2 pl2"}) => {
             {!auth && 
                 <Link to={"/login"} className={`${className}`}>Iniciar Sesión <FaUser/></Link>
             }
+
+            <IsAuthWrapper>
+                <Link to={"/profile"} className={`${className}`}>Perfil <FaUserAlt/></Link>
+            </IsAuthWrapper>
 
             <IsAdminWrapper>
                 <Link to={"/admin-dash"} className={`${className}`}>Administracion <RiAdminLine/></Link>

@@ -40,8 +40,7 @@ const AsociateServiceScreen = () => {
                 <MainSectionInfoCard
                     white={true}
                     title={associateService?.Nombre}
-                    subTitle={`Ofrecido por ${associateService?.Entidad}`}
-                    icon={Icons[associateService?.Icono]}
+                    subTitle={``}
                 />
             </StyledSection>
 
