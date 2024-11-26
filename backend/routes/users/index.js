@@ -90,6 +90,39 @@ router.patch("/", async (request, response) => {
 	}
 });
 
+router.get("/:Cedula_Usuario", verifyUser, async (request, response) => {
+	const { Cedula_Usuario } = request.params;
+
+	try {
+		const query = `
+			SELECT
+				u.Cedula_Usuario,
+				u.Nombre,
+				u.Apellidos,
+				u.Correo,
+				u.Contraseña,
+				u.Imagen,
+				tu.ID_Tipo_Usuarios,
+				tu.Nombre AS Tipo_Usuario
+			FROM Usuarios u
+			JOIN Tipo_Usuarios tu ON u.ID_Tipo_De_Usuario = tu.ID_Tipo_Usuarios
+
+			WHERE u.Cedula_Usuario = ${Cedula_Usuario}
+		`;
+
+		const user = await getQuery(query)
+
+		return response.json({user: {
+			...user[0],
+			Imagen: user[0].Imagen.toString("base64"),
+			mimeType: 'image/png'
+		}})
+	}
+	catch (err) {
+		return response.json({Error: err.message})
+	}
+});
+
 router.get("/types", async (request, response) => {
 	try {
 		const userTypes = await getQuery(`
@@ -105,6 +138,7 @@ router.get("/types", async (request, response) => {
 		return response.status(500).json({Error: err.message});
 	}
 })
+
 
 router.post("/new", async (request, response) => {
 	try {

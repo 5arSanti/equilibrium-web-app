@@ -1,10 +1,8 @@
 import React from "react";
-import axios from "axios"
 
 import { AppContext } from "../../../Context";
 import { useNavigate } from "react-router-dom";
-import { handleNotifications } from "../../../utils/handleNotifications";
-import { api } from "../../../utils/api";
+
 import { handleAdmin } from "../../../utils/HandleAuth/handleAdmin";
 import { handleAuthRequest } from "../../../utils/HandleAuth/handleAuthRequest";
 

@@ -7,7 +7,7 @@ const handleImageChange = (event, setState) => {
         return handleNotifications("error", "No se ha seleccionado un archivo");
     }
 
-    if (file.size > 50 * 1024) {
+    if (file.size > 100 * 1024) {
         return handleNotifications("error", "El archivo seleccionado es demasiado grande. El tamaño máximo permitido son 50 KB.");
     }
 

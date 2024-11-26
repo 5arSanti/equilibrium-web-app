@@ -7,13 +7,9 @@ const jwt = require("jsonwebtoken")
 
 const PropertiesReader = require('properties-reader');
 const { validateObjectValues } = require("../../Utils/Validate/validateObjectValues");
-const { validatePassword } = require("../../Utils/Validate/validatePassword");
-const { verifyAdmin } = require("../../middlewares/verifyAdmin");
 const properties = PropertiesReader('./app.properties.ini');
 
 const router = express.Router();
-
-const salt = 10;
 
 
 router.get("/", verifyUser, (request, response) => {
