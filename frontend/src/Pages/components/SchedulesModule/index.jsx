@@ -16,12 +16,14 @@ const SchedulesModule = ({ serviceID, associateSchedules }) => {
         ID_Servicio: serviceID,
     })
 
+    console.log(values)
+
     React.useEffect(() => {
         const endpoints = [
             `/schedules/${values?.ID_Servicio_Horario}`
         ]
 
-        if(serviceID) {
+        if (serviceID) {
             fetchData(endpoints)
         }
 

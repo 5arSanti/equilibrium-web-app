@@ -250,7 +250,7 @@ INSERT INTO Estado_Cita (ID_Estado_Cita, Estado) VALUES
 -- Citas
 CREATE TABLE Citas (
     ID_Cita INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    Fecha DATE NOT NULL,
+    Fecha DATE NULL,
     Observaciones TEXT NULL,
     ID_Estado_Cita INT FOREIGN KEY REFERENCES Estado_Cita(ID_Estado_Cita) NOT NULL,
     ID_Servicio_Horario INT FOREIGN KEY REFERENCES Servicios_Horarios(ID_Servicio_Horario),

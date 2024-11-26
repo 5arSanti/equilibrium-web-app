@@ -4,7 +4,7 @@ import { WrapperContainer2 } from "../../../WrapperContainers";
 
 import "./styles.css"
 
-const ScheduleCard = ({ schedule={}, selectedValue=null, height="100%" }) => {
+const ScheduleCard = ({ schedule={}, selectedValue=null, height="100%", day=false }) => {
     return(
         <WrapperContainer2
             flexDirection="column"
@@ -16,6 +16,12 @@ const ScheduleCard = ({ schedule={}, selectedValue=null, height="100%" }) => {
             `}
             height={height}
         >
+            {day && 
+                <TextCard textAlign="center">
+                    <SpanCard fontSize={12}>Dia</SpanCard> <br />
+                    {schedule.Dia}
+                </TextCard>
+            }
             <TextCard fontSize={14} textAlign="center">
                 <SpanCard fontSize={12}>Hora:</SpanCard> <br />
                 {moment(schedule.Hora_Inicio, "HH:mm").format("HH:mm A")} - {moment(schedule.Hora_Fin, "HH:mm A").format("HH:mm A")}
