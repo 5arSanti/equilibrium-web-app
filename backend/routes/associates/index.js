@@ -78,5 +78,4 @@ router.get("/:Associate_ID/schedules", async (request, response) => {
 	}
 });
 
-
 module.exports = router;

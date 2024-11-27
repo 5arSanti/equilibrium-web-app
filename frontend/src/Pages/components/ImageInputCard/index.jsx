@@ -4,7 +4,7 @@ import { WrapperContainer2 } from "../WrapperContainers";
 
 import "./styles.css"
 
-const ImageInputCard = ({stateValue, setState}) => {
+const ImageInputCard = ({stateValue, setState, info="Imagen de Perfil"}) => {
     return(
         <WrapperContainer2 padding={0} flexDirection="column" className="profile-input">
             {stateValue &&
@@ -14,7 +14,7 @@ const ImageInputCard = ({stateValue, setState}) => {
                 accept=".png, .jpg, .jpeg"
                 info="Archivos PNG (.png), JPG (.jpg) o JPEG (.jpeg)"
                 id={"user-image"}
-                label={"Imagen de Perfil:"}
+                label={info}
                 onChange={(event) => handleImageChange(event, setState)}
                 
             />

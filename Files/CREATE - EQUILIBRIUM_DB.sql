@@ -194,6 +194,12 @@ CREATE TABLE Tipo_Noticia (
 	ID_Tipo_Noticia INT PRIMARY KEY NOT NULL,
 	Nombre TEXT NOT NULL,
 )
+INSERT INTO Tipo_Noticia VALUES 
+(1, 'Salud y Bienestar'),
+(2, 'Actividades y Eventos'),
+(3, 'Innovación y Tecnología'),
+(4, 'Comunidad y Voluntariado'),
+(5, 'Regulaciones y Políticas Públicas');
 
 CREATE TABLE Noticias (
 	ID_Noticia INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
@@ -202,9 +208,10 @@ CREATE TABLE Noticias (
 	Cuerpo_Noticia NTEXT NULL,
 	Imagen VARBINARY(MAX) NULL,
 	Fuente TEXT NULL,
-	Fecha_Publicacion DATETIME NOT NULL,
-	ID_Usuario INT FOREIGN KEY REFERENCES Usuarios(Cedula_Usuario),
-	ID_Categoria_Servicios INT FOREIGN KEY REFERENCES Categorias_Servicios(ID_Categoria)
+	Fecha_Publicacion DATETIME DEFAULT GETDATE() NOT NULL,
+	ID_Tipo_Noticia INT FOREIGN KEY REFERENCES Tipo_Noticia(ID_Tipo_Noticia) NOT NULL,
+	ID_Usuario INT FOREIGN KEY REFERENCES Usuarios(Cedula_Usuario) NOT NULL,
+	ID_Categoria_Servicios INT FOREIGN KEY REFERENCES Categorias_Servicios(ID_Categoria) NOT NULL
 )
 
 --Opiniones

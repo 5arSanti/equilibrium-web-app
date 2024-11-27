@@ -22,6 +22,10 @@ const schedulesRouter = require("./schedules/index.js");
 
 const appointmentRouter = require("./appointment/index.js");
 
+const newsRouter = require("./news/index.js");
+
+const serviceCategoryRouter = require("./service-category/index.js");
+
 const routerApi = (app) => {
 	const router = express.Router();
 	app.use(`/${properties.get("app.api.structure")}/v1`, router);
@@ -43,6 +47,10 @@ const routerApi = (app) => {
 	router.use("/schedules", schedulesRouter)
 
 	router.use("/appointment", appointmentRouter)
+
+	router.use("/news", newsRouter)
+
+	router.use("/service-category", serviceCategoryRouter)
 }
 
 module.exports = routerApi;

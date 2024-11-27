@@ -1,10 +1,10 @@
 const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcrypt");
+
 const { getQuery } = require("../../database/query");
 const { connection } = require("../../database");
 
-
-const router = express.Router();
-const bcrypt = require("bcrypt");
 const { validateObjectValues } = require("../../Utils/Validate/validateObjectValues");
 const { validatePassword } = require("../../Utils/Validate/validatePassword");
 const { verifyUser } = require("../../middlewares/verifyUser");
@@ -35,7 +35,8 @@ router.get("/", verifyUser, verifyAdmin, async (request, response) => {
 	}
 });
 
-router.delete("/", async (request, response) => {
+
+router.delete("/", verifyUser, verifyAdmin, async (request, response) => {
 	try {
 		const cedulaUsuario = request.body.id;
 
@@ -54,8 +55,9 @@ router.delete("/", async (request, response) => {
 	}
 });
 
+
 const salt = 10;
-router.patch("/", async (request, response) => {
+router.patch("/", verifyUser, verifyAdmin, async (request, response) => {
 	try {
 		const id = request.body.id;
 
@@ -89,6 +91,7 @@ router.patch("/", async (request, response) => {
 		return response.status(500).json({Error: err.message});
 	}
 });
+
 
 router.get("/:Cedula_Usuario", verifyUser, async (request, response) => {
 	const { Cedula_Usuario } = request.params;

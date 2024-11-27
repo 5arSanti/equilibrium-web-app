@@ -8,7 +8,7 @@ const handleImageChange = (event, setState) => {
     }
 
     if (file.size > 100 * 1024) {
-        return handleNotifications("error", "El archivo seleccionado es demasiado grande. El tamaño máximo permitido son 50 KB.");
+        return handleNotifications("error", "El archivo seleccionado es demasiado grande. El tamaño máximo permitido son 100 KB.");
     }
 
     const reader = new FileReader();
