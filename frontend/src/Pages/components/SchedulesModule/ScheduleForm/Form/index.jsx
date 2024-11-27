@@ -37,7 +37,7 @@ const Form = ({ state={}, setState }) => {
                 <WrapperContainer2 flexDirection="column" padding={0} gap={5} height="auto">
                     <TextCard className="bold">Horario seleccionado</TextCard>
                     {schedule ?
-                        <div style={{border: "1px solid var(--pallete-1)", width: "100%" }}>
+                        <div className="border-style">
                             <ScheduleCard
                                 schedule={schedule}
                                 height="auto"
@@ -45,7 +45,7 @@ const Form = ({ state={}, setState }) => {
                             />
                         </div>
                     :
-                        <div style={{border: "1px solid var(--pallete-1)", width: "100%" }}>
+                        <div className="border-style">
                             <WrapperContainer2 className="schedule-card">
                                 <TextCard className="bold" textAlign="center">No se ha seleccionado un horario</TextCard>
                             </WrapperContainer2>

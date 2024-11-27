@@ -4,10 +4,10 @@ import { WrapperContainer3 } from "../WrapperContainers";
 
 import "./styles.css";
 
-const LogInfoCard = ({icon, title, text, fontSize=24}) => {
+const LogInfoCard = ({icon, title, text, fontSize=24, width="100%", padding=40, gap=20}) => {
     return(
-        <FadeWrapper>
-            <WrapperContainer3 height="100%" flexDirection="column" gap={20} justifyContent="center" padding={40} className="log-info-card">
+        <FadeWrapper width={width}>
+            <WrapperContainer3 width={width} height="100%" flexDirection="column" gap={gap} justifyContent="center" padding={padding} className="log-info-card">
                 {icon || ""}
 
                 <TextCard fontSize={fontSize} className="bold" textAlign="center">
@@ -15,7 +15,7 @@ const LogInfoCard = ({icon, title, text, fontSize=24}) => {
                 </TextCard>
 
                 <TextCard textAlign="center">
-                    <SpanCard className={"italic"}>
+                    <SpanCard className={"italic"} fontSize={14}>
                         {title}
                     </SpanCard>
                 </TextCard>

@@ -116,6 +116,10 @@ router.get("/:Cedula_Usuario", verifyUser, async (request, response) => {
 
 		const user = await getQuery(query)
 
+		if (!user[0].Imagen) {
+			return response.json({userInfo: user[0]});
+		}
+
 		return response.json({userInfo: {
 			...user[0],
 			Imagen: user[0].Imagen.toString("base64"),

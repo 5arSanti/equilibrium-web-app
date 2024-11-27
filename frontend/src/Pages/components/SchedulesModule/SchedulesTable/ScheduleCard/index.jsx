@@ -11,10 +11,12 @@ const ScheduleCard = ({ schedule={}, selectedValue=null, height="100%", day=fals
             gap={0}
             padding={5}
             className={`
-                schedule-card ${schedule?.ID_Estado_Horario !== 1 && "red-bg"}
+                schedule-card ${schedule?.ID_Estado_Horario === 0 && "red-bg"}
                 ${selectedValue && selectedValue === schedule.id && "selected"}
             `}
             height={height}
+            justifyContent="center" 
+            alignItems="center"
         >
             {day && 
                 <TextCard textAlign="center">
@@ -26,9 +28,12 @@ const ScheduleCard = ({ schedule={}, selectedValue=null, height="100%", day=fals
                 <SpanCard fontSize={12}>Hora:</SpanCard> <br />
                 {moment(schedule.Hora_Inicio, "HH:mm").format("HH:mm A")} - {moment(schedule.Hora_Fin, "HH:mm A").format("HH:mm A")}
             </TextCard>
-            <TextCard textAlign="center">
-                <SpanCard fontSize={12}>{schedule.Estado}</SpanCard>
-            </TextCard>
+
+            {schedule.Estado &&
+                <TextCard textAlign="center">
+                    <SpanCard fontSize={12}>{schedule.Estado}</SpanCard>
+                </TextCard>
+            }
         </WrapperContainer2>
     )
 }
