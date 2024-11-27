@@ -93,12 +93,12 @@ router.get("/details/:ID_Noticia", async (request, response) => {
 				u.Correo AS Correo_Autor,
 				u.Imagen AS Imagen_Autor,
 
-				cs.Nombre AS Categoria_Servicio,
+				cs.Nombre AS Categoria_Servicio
 
 			FROM Noticias n
 
 			JOIN Tipo_Noticia tn ON n.ID_Tipo_Noticia = tn.ID_Tipo_Noticia
-			JOIN Usuarios u ON n.ID_Usuario = u.ID_Usuario
+			JOIN Usuarios u ON n.ID_Usuario = u.Cedula_Usuario
 			JOIN Categorias_Servicios cs ON n.ID_Categoria_Servicios = cs.ID_Categoria
 
 			WHERE n.ID_Noticia = ${ID_Noticia}
@@ -106,14 +106,23 @@ router.get("/details/:ID_Noticia", async (request, response) => {
 
 		const newsDetail = await getQuery(query)
 
-		if (!newsDetail[0].Imagen) {
-			return response.json({newsDetail: newsDetail[0]});
-		}
-
 		return response.json({newsDetail: {
 			...newsDetail[0],
-			Imagen: newsDetail[0].Imagen.toString("base64"),
-			mimeType: 'image/png'
+			Imagen: newsDetail[0].Imagen ? {
+				src: `data:image/png;base64,${newsDetail[0].Imagen.toString("base64")}`,
+				Imagen: newsDetail[0].Imagen.toString("base64"),
+				mimeType: 'image/png'
+			}
+			:
+			newsDetail[0].Imagen,
+
+			Imagen_Autor: newsDetail[0].Imagen_Autor ? {
+				src: `data:image/png;base64,${newsDetail[0].Imagen_Autor.toString("base64")}`,
+				Imagen: newsDetail[0].Imagen_Autor.toString("base64"),
+				mimeType: 'image/png'
+			}
+			:
+			newsDetail[0].Imagen_Autor
 		}})
 
 	}
