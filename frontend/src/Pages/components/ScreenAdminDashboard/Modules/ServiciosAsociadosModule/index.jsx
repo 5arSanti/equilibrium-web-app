@@ -21,7 +21,7 @@ const ServiciosAsociadosModule = () => {
 
     React.useEffect(() => {
         const endpoints = [
-            `/services/asociate/${selectedOption}`,
+            `/services/${selectedOption}/associates/`,
         ]
 
         if (selectedOption) {
@@ -43,7 +43,7 @@ const ServiciosAsociadosModule = () => {
                 ))}
             </WrapperContainer2>
 
-            <TableContainer data={moduleData?.asociateServices}/>
+            <TableContainer data={moduleData?.associateServices}/>
         </>
     );
 };
