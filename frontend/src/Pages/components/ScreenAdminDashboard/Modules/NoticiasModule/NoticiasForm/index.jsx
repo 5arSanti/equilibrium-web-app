@@ -6,9 +6,11 @@ import { handleInputChange } from "../../../../../../utils/handleInputChange";
 import { handlePostData } from "../../../../../../utils/handleData/handlePostData";
 import { GridContainer } from "../../../../GridContainer";
 import { ImageInputCard } from "../../../../ImageInputCard";
+import { AppContext } from "../../../../../../Context";
 
 
 const NoticiasForm = ({ serviciosModule={} }) => {
+    const { user } = React.useContext(AppContext);
 
     const { servicesCategories, newsTypes } = serviciosModule;
 
@@ -19,9 +21,18 @@ const NoticiasForm = ({ serviciosModule={} }) => {
         Imagen: null,
         Fuente: null,
         ID_Tipo_Noticia: null, 
-        ID_Usuario: null, 
+        ID_Usuario: null,
         ID_Categoria_Servicios: null, 
     })
+
+    React.useEffect(() => {
+        if (user?.Cedula_Usuario !== values.ID_Usuario) {
+            setValues(prevValues => ({
+                ...prevValues,
+                ID_Usuario: user.Cedula_Usuario,
+            }));
+        }
+    }, [user, values.ID_Usuario]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -55,7 +66,7 @@ const NoticiasForm = ({ serviciosModule={} }) => {
                         label={"Seleccione el tipo de la noticia"}
                         array={newsTypes}
                         defaultValue={values.ID_Tipo_Noticia}
-                        onChange={() => handleInputChange("ID_Tipo_Noticia", event, setValues)}
+                        onChange={(event) => handleInputChange("ID_Tipo_Noticia", event, setValues)}
                     />
                     <OptionInputCard
                         none={true}
@@ -63,7 +74,7 @@ const NoticiasForm = ({ serviciosModule={} }) => {
                         label={"Seleccione la categoria"}
                         array={servicesCategories}
                         defaultValue={values.ID_Categoria_Servicios}
-                        onChange={() => handleInputChange("ID_Categoria_Servicios", event, setValues)}
+                        onChange={(event) => handleInputChange("ID_Categoria_Servicios", event, setValues)}
                     />
                 </GridContainer>
 
@@ -95,7 +106,7 @@ const NoticiasForm = ({ serviciosModule={} }) => {
                     title="Enviar información del curso"
                     type="submit"
                 >
-                    Agendar cita
+                    Crear noticia
                 </ButtonCard>
             </WrapperContainer2>
         </form>
