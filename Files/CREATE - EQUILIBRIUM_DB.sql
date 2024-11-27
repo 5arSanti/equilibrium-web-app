@@ -66,10 +66,10 @@ CREATE TABLE Servicios_Principales (
 	ID_Entidad INT FOREIGN KEY REFERENCES Entidades(ID_Entidad) NOT NULL
 );
 
-INSERT INTO Servicios_Principales (ID_Servicio_Principal, Nombre, Descripcion, Icono, ID_Entidad) VALUES
-(1, 'Centro de estetica y SPA', 'Ofrecemos tratamientos faciales, masajes relajantes, cuidado corporal, manicura, pedicura y depilación, todo en un ambiente tranquilo y elegante. ¡Ven y disfruta de una experiencia rejuvenecedora!', 'Estetica_SPA', 2),
-(2, 'Servicios de salud integral', 'Ofrecemos servicios de salud integral que incluyen consultas médicas, terapias físicas, nutrición, psicología y programas de bienestar, todo en un entorno profesional y acogedor. ¡Tu salud y bienestar son nuestra prioridad!', 'Salud_Integral', 1),
-(3, 'Centro geriatrico', 'Ofrecemos atención integral para adultos mayores, incluyendo cuidados médicos, terapias físicas, actividades recreativas y apoyo emocional, en un entorno seguro y acogedor. ¡Tu bienestar es nuestra prioridad!', 'Centro_Geriatrico', 1);
+INSERT INTO Servicios_Principales (Nombre, Descripcion, Icono, ID_Entidad) VALUES
+('Centro de estetica y SPA', 'Ofrecemos tratamientos faciales, masajes relajantes, cuidado corporal, manicura, pedicura y depilación, todo en un ambiente tranquilo y elegante. ¡Ven y disfruta de una experiencia rejuvenecedora!', 'Estetica_SPA', 2),
+('Servicios de salud integral', 'Ofrecemos servicios de salud integral que incluyen consultas médicas, terapias físicas, nutrición, psicología y programas de bienestar, todo en un entorno profesional y acogedor. ¡Tu salud y bienestar son nuestra prioridad!', 'Salud_Integral', 1),
+('Centro geriatrico', 'Ofrecemos atención integral para adultos mayores, incluyendo cuidados médicos, terapias físicas, actividades recreativas y apoyo emocional, en un entorno seguro y acogedor. ¡Tu bienestar es nuestra prioridad!', 'Centro_Geriatrico', 1);
 
 
 

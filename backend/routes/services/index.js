@@ -1,5 +1,9 @@
 const express = require("express");
 const { getQuery } = require("../../database/query");
+const { compressImage } = require("../../Utils/Images/compressImage");
+const { validateObjectValues } = require("../../Utils/Validate/validateObjectValues");
+const { verifyUser } = require("../../middlewares/verifyUser");
+const { verifyAdmin } = require("../../middlewares/verifyAdmin");
 
 const router = express.Router();
 
@@ -11,7 +15,7 @@ router.get("/", async (request, response) => {
 				UPPER(sp.Nombre) AS Nombre,
 				sp.Descripcion,
 				sp.Icono,
-				sp.Enlace,
+				sp.Imagen,
 				e.Nombre AS Entidad
 			FROM Servicios_Principales sp
 
@@ -24,6 +28,37 @@ router.get("/", async (request, response) => {
 		return response.status(500).json({Error: err.message});
 	}
 });
+
+router.post("/", verifyUser, verifyAdmin, async (request, response) => {
+	try {
+		validateObjectValues(request.body, "No pueden haber campos vacios", ["Imagen"])
+
+		const {
+			Nombre,
+			Descripcion,
+			Icono,
+			Imagen,
+			ID_Entidad,
+		} = request.body;
+
+		const compressedImage = await compressImage(Imagen);
+
+		const query = `
+			INSERT INTO Servicios_Principales (Nombre, Descripcion, Icono, Imagen, ID_Entidad)
+			VALUES
+			('${Nombre}','${Descripcion}', '${Icono}', 0x${compressedImage}, ${ID_Entidad})
+		`;
+
+		await getQuery(query);
+
+		return response.json({Status: "Success", message: "Noticia creada correctamente"});
+
+	}
+	catch (err) {
+		return response.json({Error: err.message})
+	}
+
+})
 
 router.get("/:ID_Service", async (request, response) => {
 

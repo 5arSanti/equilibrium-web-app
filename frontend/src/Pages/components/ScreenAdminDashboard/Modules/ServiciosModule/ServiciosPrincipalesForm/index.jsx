@@ -33,7 +33,7 @@ const ServiciosPrincipalesForm = ({serviciosModule = {}}) => {
                 required={true}
                 id={"title"}
                 label={"Titulo"}
-                placeholder="Ingrese el titulo de la noticia"
+                placeholder="Ingrese el nombre del servicio"
                 value={values.Titulo}
                 onChange={(event) => handleInputChange("Titulo", event, setValues)}
             />

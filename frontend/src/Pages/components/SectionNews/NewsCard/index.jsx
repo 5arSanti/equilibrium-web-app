@@ -79,7 +79,7 @@ const NewsCard = ({item={}}) => {
                     </WrapperContainer2>
 
                     <img 
-                        src={item?.Imagen?.src} 
+                        src={item?.Imagen} 
                         className={"bg"}
                         alt="alt-image"
                     />

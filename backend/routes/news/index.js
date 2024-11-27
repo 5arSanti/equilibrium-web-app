@@ -32,11 +32,7 @@ router.get("/", async (request, response) => {
 
 		const newsList = news.map((item) => ({
 			...item,
-			Imagen: item.Imagen ? {
-				src: `data:image/png;base64,${item.Imagen.toString("base64")}`
-			}
-			:
-			item.Imagen
+			Imagen: item.Imagen ? `data:image/png;base64,${item.Imagen.toString("base64")}` : null
 		}))
 
 		return response.json({news: newsList})
@@ -118,21 +114,8 @@ router.get("/details/:ID_Noticia", async (request, response) => {
 
 		return response.json({newsDetail: {
 			...newsDetail[0],
-			Imagen: newsDetail[0].Imagen ? {
-				src: `data:image/png;base64,${newsDetail[0].Imagen.toString("base64")}`,
-				Imagen: newsDetail[0].Imagen.toString("base64"),
-				mimeType: 'image/png'
-			}
-			:
-			newsDetail[0].Imagen,
-
-			Imagen_Autor: newsDetail[0].Imagen_Autor ? {
-				src: `data:image/png;base64,${newsDetail[0].Imagen_Autor.toString("base64")}`,
-				Imagen: newsDetail[0].Imagen_Autor.toString("base64"),
-				mimeType: 'image/png'
-			}
-			:
-			newsDetail[0].Imagen_Autor
+			Imagen: newsDetail[0].Imagen ? `data:image/png;base64, ${newsDetail.Imagen.toString("base64")}` : null,
+			Imagen_Autor: newsDetail[0].Imagen_Autor ? `data:image/png;base64, ${newsDetail.Imagen_Autor.toString("base64")}` : null
 		}})
 
 	}

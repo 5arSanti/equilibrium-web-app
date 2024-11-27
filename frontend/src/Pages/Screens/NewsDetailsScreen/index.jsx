@@ -30,7 +30,7 @@ const NewsDetailsScreen = () => {
 
     return(
         <AuthWrapper>
-            <StyledSection image={newsDetail?.Imagen?.src}>
+            <StyledSection image={newsDetail?.Imagen}>
                 <WrapperContainer2 
                     justifyContent="flex-end" 
                     alignItems="flex-start"
