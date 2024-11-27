@@ -1,7 +1,8 @@
 import React from "react";
-import { WrapperContainer2 } from "../../../WrapperContainers";
 import { TableContainer } from "../../../TableContainer";
 import { AppContext } from "../../../../../Context";
+import { ModulesWrapper } from "../ModulesWrapper";
+import { ServiciosPrincipalesForm } from "./ServiciosPrincipalesForm";
 
 const ServiciosModule = () => {
     const { fetchData } = React.useContext(AppContext);
@@ -13,6 +14,7 @@ const ServiciosModule = () => {
     React.useEffect(() => {
         const endpoints = [
             `/services`,
+            `/entidades`
         ]
 
         fetchData(endpoints, setServiciosModule)
@@ -21,29 +23,16 @@ const ServiciosModule = () => {
 
     const options = {
         "Lista de servicios": <TableContainer data={serviciosModule?.mainServices}/>,
+        "Crear servicio principal": <ServiciosPrincipalesForm serviciosModule={serviciosModule}/>,
     }
 
 
     return(
-        <>
-            {/* <WrapperContainer2 flexDirection="column" gap={20} padding={0}>
-                {Object.keys(options).map((item, index) => (
-                    <ButtonCard
-                        key={index}
-                        onClick={() => setSelectedOption(item)}
-                        title={item}
-                    >
-                        {item}
-                    </ButtonCard>
-                ))}
-            </WrapperContainer2> */}
-
-            <WrapperContainer2 padding={0}>
-                {selectedOption && 
-                    options[selectedOption]
-                }
-            </WrapperContainer2>
-        </>
+        <ModulesWrapper
+            options={options}
+            setSelectedOption={setSelectedOption}
+            selectedOption={selectedOption}
+        />
     );
 }
 
