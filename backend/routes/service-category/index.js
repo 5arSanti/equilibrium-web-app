@@ -24,4 +24,24 @@ router.get("/", verifyUser, verifyAdmin, async (request, response) => {
 	}
 });
 
+
+router.get("/services", verifyUser, verifyAdmin, async (request, response) => {
+	try {
+		const query = `
+			SELECT
+				ID_Servicio_Principal AS id,
+				Nombre
+
+			FROM Servicios_Principales
+		`;
+
+		const noDetailsServices = await getQuery(query)
+
+		return response.json({noDetailsServices: noDetailsServices})
+	}
+	catch (err) {
+		return response.json({Error: err.message})
+	}
+});
+
 module.exports = router;
