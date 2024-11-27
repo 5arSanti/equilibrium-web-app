@@ -1,7 +1,75 @@
 const express = require("express");
 const { getQuery } = require("../../database/query");
+const { verifyUser } = require("../../middlewares/verifyUser");
+const { verifyAdmin } = require("../../middlewares/verifyAdmin");
+const { validateObjectValues } = require("../../Utils/Validate/validateObjectValues");
+const { compressImage } = require("../../Utils/Images/compressImage");
 
 const router = express.Router();
+
+router.post("/", verifyUser, verifyAdmin, async (request, response) => {
+	try {
+		validateObjectValues(request.body, "No pueden haber campos vacios", ["Imagen"])
+
+		const {
+			Nombre,
+			Descripcion,
+			Imagen,
+			Precio,
+			ID_Categoria,
+			ID_Servicio_Principal,
+		} = request.body;
+
+		const compressedImage = await compressImage(Imagen);
+
+
+		await getQuery(`
+			INSERT INTO Servicios_Asociados (Nombre, Descripcion, Imagen, Precio, ID_Categoria)
+			VALUES
+			('${Nombre}','${Descripcion}', 0x${compressedImage}, ${Precio}, ${ID_Categoria})
+		`);
+
+		const newAssociateService = await getQuery(`
+			SELECT
+				ID_Servicio_Asociado
+
+			FROM Servicios_Asociados
+			WHERE
+				Nombre = '${Nombre}' AND
+				Precio = ${Precio} AND
+				ID_Categoria = ${ID_Categoria}
+		`)
+
+		await getQuery(`
+			INSERT INTO Detalles_Servicios_Principales_Servicios_Asociados
+			(ID_Servicio_Principal, ID_Servicio_Asociado)
+
+			VALUES
+			(${ID_Servicio_Principal}, ${newAssociateService[0].ID_Servicio_Asociado})
+		`);
+
+		await getQuery(`
+		INSERT INTO Servicios_Horarios (ID_Servicio_Asociado, ID_Dia, ID_Horario, ID_Estado_Horario)
+			SELECT
+				sa.ID_Servicio_Asociado,
+				ds.ID_Dia,
+				h.ID_Horario,
+				1
+			FROM Servicios_Asociados sa
+			CROSS JOIN Dias_Semana ds
+			CROSS JOIN Horarios h
+
+			WHERE sa.ID_Servicio_Asociado = ${newAssociateService[0].ID_Servicio_Asociado}
+		`)
+
+		return response.json({Status: "Success", message: "Servicio asociado creado correctamente"});
+
+	}
+	catch (err) {
+		return response.json({Error: err.message})
+	}
+
+})
 
 router.get("/:Associate_ID", async (request, response) => {
 	try {

@@ -51,7 +51,7 @@ router.post("/", verifyUser, verifyAdmin, async (request, response) => {
 
 		await getQuery(query);
 
-		return response.json({Status: "Success", message: "Noticia creada correctamente"});
+		return response.json({Status: "Success", message: "Servicio creado correctamente"});
 
 	}
 	catch (err) {
@@ -71,7 +71,7 @@ router.get("/:ID_Service", async (request, response) => {
 				UPPER(sp.Nombre) AS Nombre,
 				sp.Descripcion,
 				sp.Icono,
-				sp.Enlace,
+				sp.Imagen,
 				e.Nombre AS Entidad
 
 			FROM Servicios_Principales sp
@@ -82,7 +82,10 @@ router.get("/:ID_Service", async (request, response) => {
 
 
 		return response.status(200).json({
-			mainService: mainService[0],
+			mainService: {
+				...mainService[0],
+				Imagen: mainService[0].Imagen ? `data:image/png;base64,${mainService[0].Imagen.toString("base64")}` : null,
+			}
 		});
 	}
 	catch (err) {
@@ -111,9 +114,14 @@ router.get("/:ID_Service/associates", async (request, response) => {
 			WHERE dspsa.ID_Servicio_Principal = ${ID_Service}
 		`);
 
+		const newsList = associateServices.map((item) => ({
+			...item,
+			Imagen: item.Imagen ? `data:image/png;base64,${item.Imagen.toString("base64")}` : null
+		}))
+
 
 		return response.status(200).json({
-			associateServices: associateServices,
+			associateServices: newsList,
 		});
 	}
 	catch (err) {

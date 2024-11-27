@@ -5,6 +5,7 @@ import { InputCard, OptionInputCard, TextAreaCard } from "../../../../InputsCard
 import { handleInputChange } from "../../../../../../utils/handleInputChange";
 import { GridContainer } from "../../../../GridContainer";
 import { ImageInputCard } from "../../../../ImageInputCard";
+import { ButtonCard } from "../../../../ButtonCard";
 
 const AsociadosForm = ({moduleData = {}}) => {
 
@@ -23,18 +24,18 @@ const AsociadosForm = ({moduleData = {}}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        await handlePostData(event, values, "/news");
+        await handlePostData(event, values, "/associates");
     }
 
     return(
         <FormWrapper onSubmit={handleSubmit}>
             <InputCard
                 required={true}
-                id={"title"}
-                label={"Titulo"}
+                id={"name"}
+                label={"Nombre"}
                 placeholder="Ingrese el nombre del servicio asociado"
-                value={values.Titulo}
-                onChange={(event) => handleInputChange("Titulo", event, setValues)}
+                value={values.Nombre}
+                onChange={(event) => handleInputChange("Nombre", event, setValues)}
             />
             <TextAreaCard
                 required={true}
@@ -79,6 +80,12 @@ const AsociadosForm = ({moduleData = {}}) => {
                 info="Imagen del servicio"
             />
 
+            <ButtonCard
+                title="Crear servicio asociado"
+                type="submit"
+            >
+                Crear servicio asociado
+            </ButtonCard>
 
         </FormWrapper>
     );

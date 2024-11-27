@@ -1,7 +1,7 @@
 import "./styles.css";
 
 const ReactTable = ({data={}}) => {
-	const columns = data ? Object.keys(data[0]) : [];
+	const columns = data?.length ? Object.keys(data[0]).filter(column => column !== 'Imagen') : [];
 
 	return (
 		<table className="table-container" id="dataTable">

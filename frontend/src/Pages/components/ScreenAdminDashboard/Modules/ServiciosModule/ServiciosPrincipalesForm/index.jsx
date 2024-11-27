@@ -7,6 +7,7 @@ import { GridContainer } from "../../../../GridContainer";
 import { DropCard } from "../../../../DropCard";
 import { Icons } from "../../../../../../utils/Icons";
 import { ImageInputCard } from "../../../../ImageInputCard";
+import { ButtonCard } from "../../../../ButtonCard";
 
 const ServiciosPrincipalesForm = ({serviciosModule = {}}) => {
 
@@ -24,7 +25,7 @@ const ServiciosPrincipalesForm = ({serviciosModule = {}}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        await handlePostData(event, values, "/news");
+        await handlePostData(event, values, "/services");
     }
 
     return(
@@ -32,10 +33,10 @@ const ServiciosPrincipalesForm = ({serviciosModule = {}}) => {
             <InputCard
                 required={true}
                 id={"title"}
-                label={"Titulo"}
+                label={"Nombre"}
                 placeholder="Ingrese el nombre del servicio"
-                value={values.Titulo}
-                onChange={(event) => handleInputChange("Titulo", event, setValues)}
+                value={values.Nombre}
+                onChange={(event) => handleInputChange("Nombre", event, setValues)}
             />
             <TextAreaCard
                 required={true}
@@ -70,6 +71,9 @@ const ServiciosPrincipalesForm = ({serviciosModule = {}}) => {
                 info="Imagen del servicio"
             />
 
+            <ButtonCard type="submit">
+                Crear servicio principal
+            </ButtonCard>
 
         </FormWrapper>
     );
