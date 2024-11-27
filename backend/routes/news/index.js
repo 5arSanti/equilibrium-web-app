@@ -16,6 +16,7 @@ router.get("/", async (request, response) => {
 				n.Titulo,
 				n.SubTitulo,
 				n.Fecha_Publicacion,
+				n.Imagen,
 
 				tn.Nombre AS Tipo_Noticia,
 
@@ -29,7 +30,16 @@ router.get("/", async (request, response) => {
 
 		const news = await getQuery(query)
 
-		return response.json({news: news})
+		const newsList = news.map((item) => ({
+			...item,
+			Imagen: item.Imagen ? {
+				src: `data:image/png;base64,${item.Imagen.toString("base64")}`
+			}
+			:
+			item.Imagen
+		}))
+
+		return response.json({news: newsList})
 	}
 	catch (err) {
 		return response.json({Error: err.message})

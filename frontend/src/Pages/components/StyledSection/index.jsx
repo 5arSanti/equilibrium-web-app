@@ -1,11 +1,11 @@
 import { mainHome } from "../../../assets";
 import "./styles.css"
 
-const StyledSection = ({children, image, height="100vh"}) => {
+const StyledSection = ({children, image, height="100vh", className=""}) => {
 
     return (
         <section 
-            className="styled-home-main-container" 
+            className={`styled-home-main-container ${className}`}
             id="about"
             style={{
                 height: height,

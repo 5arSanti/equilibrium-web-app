@@ -21,7 +21,7 @@ const StyleCard1 = ({item={}}) => {
                 className="style-card2 relative"
                 height="100vh"
             >
-                <div className="project-info relative">
+                <div className="project-info animation-bg relative">
                     <WrapperContainer2 
                         flexDirection="column" 
                         gap={20} 
