@@ -7,7 +7,6 @@ import { WrapperContainer1, WrapperContainer2 } from "../../WrapperContainers";
 
 import { GridContainer } from "../../GridContainer";
 import { SubInfoCard } from "../../SubInfoCard";
-import { StyledSection } from "../../StyledSection";
 
 import "./styles.css"
 

@@ -94,8 +94,11 @@ const LoginScreen = () => {
 
                             </form>
 
+
+                            <WrapperContainer2 flexDirection="column" gap={20} padding={"75px 0 0 0"}>
                                 <TextCard white={true} textAlign="center">¿No tiene cuenta?</TextCard>
                                 <ButtonCard onClick={() => navigate("/register")}>Registrate</ButtonCard>
+                            </WrapperContainer2>
                         </WrapperContainer2>
                     </WrapperContainer2>
                 </FadeWrapper>

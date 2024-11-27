@@ -134,7 +134,7 @@ router.get("/:Cedula_Usuario", verifyUser, async (request, response) => {
 	}
 });
 
-router.get("/types", async (request, response) => {
+router.get("/types", verifyUser, verifyAdmin, async (request, response) => {
 	try {
 		const userTypes = await getQuery(`
 			SELECT

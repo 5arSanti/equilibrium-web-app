@@ -1,9 +1,11 @@
 const express = require("express");
 const { getQuery } = require("../../database/query");
+const { verifyUser } = require("../../middlewares/verifyUser");
+const { verifyAdmin } = require("../../middlewares/verifyAdmin");
 
 const router = express.Router();
 
-router.get("/", async (request, response) => {
+router.get("/", verifyUser, verifyAdmin, async (request, response) => {
 	try {
 		const entidades = await getQuery(`
 			SELECT

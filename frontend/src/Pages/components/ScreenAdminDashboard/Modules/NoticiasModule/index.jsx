@@ -13,6 +13,11 @@ const NoticiasModule = () => {
 
     const [selectedOption, setSelectedOption] = React.useState("Lista de servicios");
 
+    const newsWithoutImages = serviciosModule?.news?.map((item) => ({
+        ...item,
+        Imagen: ""
+    }))
+
     React.useEffect(() => {
         const endpoints = [
             `/news`,
@@ -25,14 +30,14 @@ const NoticiasModule = () => {
     
 
     const options = {
-        "Gestion de Noticias": <TableContainer data={serviciosModule?.news}/>,
+        "Gestion de Noticias": <TableContainer data={newsWithoutImages}/>,
         "Crear noticia": <NoticiasForm serviciosModule={serviciosModule}/>,
     }
 
 
     return(
-        <GridContainer className="grid-05-15">
-            <WrapperContainer2 flexDirection="column" gap={20} padding={0}>
+        <GridContainer className="grid-1">
+            <WrapperContainer2 flexDirection="row" gap={20} padding={0}>
                 {Object.keys(options).map((item, index) => (
                     <ButtonCard
                         key={index}

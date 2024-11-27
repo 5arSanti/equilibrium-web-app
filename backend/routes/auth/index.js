@@ -21,7 +21,7 @@ router.get("/", verifyUser, (request, response) => {
 	}
 });
 
-router.get("/logout", (request, response) => {
+router.get("/logout", verifyUser, (request, response) => {
 	try {
 		response.clearCookie("authToken")
 		return response.json({Status: "Success", message: "Sesion Cerrada Correctamente"});
