@@ -16,11 +16,11 @@ router.get("/", verifyUser, verifyAdmin, async (request, response) => {
 	try {
 		const query = `
 			SELECT
-				Cedula_Usuario AS id,
-				u.Nombre AS names,
-				u.Apellidos AS surnames,
-				u.Correo AS email,
-				tu.Nombre AS userType
+				u.Cedula_Usuario,
+				u.Nombre,
+				u.Apellidos,
+				u.Correo,
+				tu.Nombre AS 'Tipo de usuario'
 
 			FROM Usuarios u
 			JOIN Tipo_Usuarios tu ON u.ID_Tipo_De_Usuario = tu.ID_Tipo_Usuarios

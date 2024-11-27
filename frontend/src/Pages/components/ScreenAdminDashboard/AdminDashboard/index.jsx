@@ -14,6 +14,7 @@ import { ServiciosAsociadosModule } from "../Modules/ServiciosAsociadosModule";
 import { IoMdClose } from "react-icons/io";
 
 import "./styles.css";
+import { UsuariosModule } from "../Modules/UsuariosModule";
 
 
 const AdminDashboard = () => {
@@ -25,7 +26,7 @@ const AdminDashboard = () => {
         "Entidades": <EntidadesModule/>,
         "Servicios": <ServiciosModule/>,
         "Servicios asociados": <ServiciosAsociadosModule/>,
-        "Usuarios": <p></p>,
+        "Usuarios": <UsuariosModule/>,
         "Empleados": <p></p>,
 
     }
