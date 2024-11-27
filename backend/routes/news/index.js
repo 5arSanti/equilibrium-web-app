@@ -17,11 +17,14 @@ router.get("/", async (request, response) => {
 				n.SubTitulo,
 				n.Fecha_Publicacion,
 
-				tn.Nombre AS Tipo_Noticia
+				tn.Nombre AS Tipo_Noticia,
+
+				cs.Nombre AS Categoria_Servicio
 
 			FROM Noticias n
 
 			JOIN Tipo_Noticia tn ON n.ID_Tipo_Noticia = tn.ID_Tipo_Noticia
+			JOIN Categorias_Servicios cs ON n.ID_Categoria_Servicios = cs.ID_Categoria
 		`;
 
 		const news = await getQuery(query)
@@ -96,7 +99,7 @@ router.get("/details/:ID_Noticia", async (request, response) => {
 
 			JOIN Tipo_Noticia tn ON n.ID_Tipo_Noticia = tn.ID_Tipo_Noticia
 			JOIN Usuarios u ON n.ID_Usuario = u.ID_Usuario
-			JOIN Categorias_Servicios cs ON n.ID_Categoria_Servicio = cs.ID_Categoria_Servicio
+			JOIN Categorias_Servicios cs ON n.ID_Categoria_Servicios = cs.ID_Categoria
 
 			WHERE n.ID_Noticia = ${ID_Noticia}
 		`;

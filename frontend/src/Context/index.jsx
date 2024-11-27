@@ -36,6 +36,7 @@ const AppProvider = ({children}) => {
         const endpoints = [
             "/version",
             "/services",
+            "/news",
         ]
 
         fetchData(endpoints)

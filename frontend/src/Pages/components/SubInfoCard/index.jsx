@@ -9,10 +9,11 @@ const SubInfoCard = ({
     text, 
     textAlign="start",
     titleSize=12,
-    textSize=18
+    textSize=18,
+    padding="15px 25px"
 }) => {
     return (
-        <WrapperContainer2 flexDirection="column" padding={"15px 25px"} gap={5} height="auto" className="sub-info-card-container">
+        <WrapperContainer2 flexDirection="column" padding={padding} gap={5} height="auto" className="sub-info-card-container">
             <TextCard textAlign={textAlign}>
                 <SpanCard fontSize={titleSize}>
                     {subTitle}

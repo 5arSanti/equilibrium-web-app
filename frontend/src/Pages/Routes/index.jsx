@@ -10,6 +10,7 @@ import { AdminDashboardScreen } from "../Screens/AdminDashboardScreen";
 import { MainServiceScreen } from "../Screens/MainServiceScreen";
 import { AsociateServiceScreen } from "../Screens/AsociateServiceScreen";
 import { ProfileScreen } from "../Screens/ProfileScreen";
+import { NewsDetailsScreen } from "../Screens/NewsDetailsScreen";
 
 const AppRoutes = () => {
 
@@ -24,6 +25,7 @@ const AppRoutes = () => {
         {path: "/:Service_ID/:Associate_ID", element: <AsociateServiceScreen/>},
         
         {path: "/profile", element: <ProfileScreen/>},
+        {path: "/news/:ID_Noticia", element: <NewsDetailsScreen/>},
 
         {path: "/admin-dash", element: <AdminDashboardScreen/>},
         {path: "/users", element: <UsersScreen/>},
