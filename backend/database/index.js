@@ -1,10 +1,5 @@
 const sql = require("mssql");
 
-
-// const PropertiesReader = require('properties-reader');
-// const properties = PropertiesReader('./app.properties.ini');
-
-
 const sqlConfig = {
 	user: process.env.DB_USER,
 	password: process.env.DB_PASSWORD,

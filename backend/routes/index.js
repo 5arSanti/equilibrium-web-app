@@ -1,8 +1,5 @@
 const express = require("express");
 
-const PropertiesReader = require('properties-reader');
-const properties = PropertiesReader('./app.properties.ini');
-
 
 const usersRouter = require("./users/index.js")
 

@@ -5,9 +5,7 @@ const { getQuery } = require("../../database/query");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 
-const PropertiesReader = require('properties-reader');
 const { validateObjectValues } = require("../../Utils/Validate/validateObjectValues");
-const properties = PropertiesReader('./app.properties.ini');
 
 const router = express.Router();
 
