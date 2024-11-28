@@ -66,7 +66,7 @@ router.post("/login", async (request, response) => {
 
 
 		const user = dbUser[0];
-		const token = jwt.sign({user: user}, `${properties.get("app.login.token")}`, {expiresIn: "1d"});
+		const token = jwt.sign({user: user}, `${process.env.LOGIN_TOKEN}`, {expiresIn: "1d"});
 
 		response.cookie("authToken", token, {
 			httpOnly: true,

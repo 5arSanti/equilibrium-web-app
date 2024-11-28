@@ -28,7 +28,7 @@ const serviceCategoryRouter = require("./service-category/index.js");
 
 const routerApi = (app) => {
 	const router = express.Router();
-	app.use(`/${properties.get("app.api.structure")}/v1`, router);
+	app.use(`/${process.env.API_STRUCTURE}/v1`, router);
 
 	// Routes
 	router.use("/users", usersRouter);
