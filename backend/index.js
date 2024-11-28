@@ -31,7 +31,7 @@ const options = {
 		  	callback(new Error("Acceso denegado, CORS Error"));
 		}
 	},
-	methods: ["POST", "GET", "DELETE", "PATCH"],
+	methods: ["POST", "GET", "DELETE", "PATCH", "OPTIONS"],
 	credentials: true,
 }
 app.use(cors(options));
