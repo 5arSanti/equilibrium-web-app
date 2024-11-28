@@ -11,15 +11,13 @@ const port = 3080;
 const whiteList = [
     // Local
 	"http://localhost:5173",
+	"http://localhost:5173",
 
     // DEV Y QA
 
 	// PROD
 	"https://equilibrium-eges.vercel.app",
-	"https://equilibrium-eges.vercel.app/",
 	"https://equilibrium-eges-santiago-arias-projects.vercel.app",
-	"https://equilibrium-eges-santiago-arias-projects.vercel.app/",
-	"https://equilibrium-eges-n4uaajkdh-santiago-arias-projects.vercel.app/",
 	"https://equilibrium-eges-n4uaajkdh-santiago-arias-projects.vercel.app",
 ];
 
@@ -36,10 +34,10 @@ const options = {
 }
 app.use(cors(options));
 
+app.options("*", cors(options));
+
 app.use(express.json());
 app.use(cookieParser());
-
-app.options("*", cors(options));
 
 routerApi(app);
 

@@ -1,10 +1,17 @@
 import { api } from "../api";
 
+const headers = {
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+}
+
 const fetchData = async (endpoint) => {
     const response = await fetch(`${api}/${endpoint}`, {
 		mode: "cors",
 		method: "GET",
         credentials: "include",
+        headers: headers
 	});
     const data = await response.json();
 
