@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 const handleAuthRequest = async (context, navigate) => {
     const { setUser, setAuth } = context;
 
-    await axios.get(`${api}/auth/`)
+    await axios.get(`${api}/auth/`, { mode: "cors" })
         .then(response => {
             const { data } = response;
 
