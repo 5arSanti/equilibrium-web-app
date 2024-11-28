@@ -114,8 +114,8 @@ router.get("/details/:ID_Noticia", async (request, response) => {
 
 		return response.json({newsDetail: {
 			...newsDetail[0],
-			Imagen: newsDetail[0].Imagen ? `data:image/png;base64, ${newsDetail.Imagen.toString("base64")}` : null,
-			Imagen_Autor: newsDetail[0].Imagen_Autor ? `data:image/png;base64, ${newsDetail.Imagen_Autor.toString("base64")}` : null
+			Imagen: newsDetail[0].Imagen ? `data:image/png;base64, ${newsDetail[0].Imagen.toString("base64")}` : null,
+			Imagen_Autor: newsDetail[0].Imagen_Autor ? `data:image/png;base64, ${newsDetail[0].Imagen_Autor.toString("base64")}` : null
 		}})
 
 	}

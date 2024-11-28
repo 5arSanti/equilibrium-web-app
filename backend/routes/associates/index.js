@@ -92,7 +92,10 @@ router.get("/:Associate_ID", async (request, response) => {
 
 
 		return response.status(200).json({
-			associateService: associateService[0],
+			associateService: {
+				...associateService[0],
+				Imagen: associateService[0].Imagen ? `data:image/png;base64, ${associateService[0].Imagen.toString("base64")}` : null
+			},
 		});
 	}
 	catch (err) {
