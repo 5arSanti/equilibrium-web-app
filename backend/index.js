@@ -37,6 +37,7 @@ app.use(cors(options));
 app.use(express.json());
 app.use(cookieParser());
 
+app.options("*", cors(options));
 
 routerApi(app);
 
