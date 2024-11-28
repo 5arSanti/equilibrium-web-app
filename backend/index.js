@@ -17,7 +17,8 @@ const whiteList = [
 	// PROD
 	"https://equilibrium-eges.vercel.app",
 	"https://equilibrium-eges.vercel.app/",
-	"https://equilibrium-eges-santiago-arias-projects.vercel.app"
+	"https://equilibrium-eges-santiago-arias-projects.vercel.app",
+	"https://equilibrium-eges-santiago-arias-projects.vercel.app/",
 ];
 
 const options = {
