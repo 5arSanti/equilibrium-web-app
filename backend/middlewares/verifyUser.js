@@ -1,8 +1,4 @@
-const PropertiesReader = require("properties-reader");
-const properties = PropertiesReader("./app.properties.ini")
 const jwt = require("jsonwebtoken");
-
-
 
 const verifyUser = (request, response, next) => {
 	const token = request.cookies.authToken;
@@ -12,7 +8,7 @@ const verifyUser = (request, response, next) => {
 	}
 
 
-	jwt.verify(token, `${properties.get("app.login.token")}`, (err, decoded) => {
+	jwt.verify(token, `${process.env.LOGIN_TOKEN}`, (err, decoded) => {
 		if (err) {
 			return response.status(401).json({Error: "Error con el Token de autenticación"})
 		}
