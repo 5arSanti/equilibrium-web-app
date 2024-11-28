@@ -2,7 +2,7 @@ const express = require("express");
 const { verifyUser } = require("../../middlewares/verifyUser");
 const { getQuery } = require("../../database/query");
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
 
 const { validateObjectValues } = require("../../Utils/Validate/validateObjectValues");
