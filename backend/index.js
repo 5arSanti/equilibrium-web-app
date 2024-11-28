@@ -15,6 +15,8 @@ const whiteList = [
     // DEV Y QA
 
 	// PROD
+	"https://equilibrium-eges.vercel.app",
+	"https://equilibrium-eges.vercel.app/",
 ];
 
 const options = {
