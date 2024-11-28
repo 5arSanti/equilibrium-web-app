@@ -1,12 +1,12 @@
 {
   "name": "backend",
-  "version": "1.7.15",
+  "version": "1.7.16",
   "description": "Backend for data-empleo web app",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --env-file=.env index.js",
     "prod": "node --env-file=.env index.js",
-    "build": "node index.js"
+    "build": "node --env-file=.env index.js"
   },
   "engines": {
     "node": "20.x"
