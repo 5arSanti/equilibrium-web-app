@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 const routerApi = require("./routes");
 
 const app = express();
-const port = 3080;
 
 const whiteList = [
     // Local
@@ -21,18 +20,25 @@ const whiteList = [
 	"https://equilibrium-eges-n4uaajkdh-santiago-arias-projects.vercel.app",
 ];
 
+// const options = {
+// 	origin: function (origin, callback) {
+// 		if (whiteList.indexOf(origin) !== -1 || !origin) {
+// 		  	callback(null, true)
+// 		} else {
+// 		  	callback(new Error("Acceso denegado, CORS Error"));
+// 		}
+// 	},
+// 	methods: ["POST", "GET", "DELETE", "PATCH", "OPTIONS"],
+// 	credentials: true,
+// 	allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Credentials"]
+// }
 const options = {
-	origin: function (origin, callback) {
-		if (whiteList.indexOf(origin) !== -1 || !origin) {
-		  	callback(null, true)
-		} else {
-		  	callback(new Error("Acceso denegado, CORS Error"));
-		}
-	},
+	origin: true,
 	methods: ["POST", "GET", "DELETE", "PATCH", "OPTIONS"],
 	credentials: true,
 	allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Credentials"]
 }
+
 app.use(cors(options));
 
 app.options("*", cors(options));
@@ -40,8 +46,18 @@ app.options("*", cors(options));
 app.use(express.json());
 app.use(cookieParser());
 
+
+app.get("/", (request, response) => {
+	try {
+
+		return response.send("Hola mundo desde mi servidor");
+	}
+	catch (err) {
+		return response.send("Error en el servidor");
+	}
+})
+
 routerApi(app);
 
-app.listen(port, () => {
-    console.log("Escuchando en el puerto: " + port);
-})
+
+module.exports = app;
