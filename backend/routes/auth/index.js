@@ -70,8 +70,7 @@ router.post("/login", async (request, response) => {
 			httpOnly: true,
 			maxAge: 24 * 60 * 60 * 1000,
 			sameSite: "none",
-			secure: true,
-			signed: true,
+			secure: true
 		});
 
 		return response.json({ Status: "Success", message: "Sesión iniciada correctamente"});
