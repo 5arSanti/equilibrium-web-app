@@ -1,12 +1,11 @@
 {
   "name": "backend",
-  "version": "1.7.26",
+  "version": "1.7.27",
   "description": "Backend for data-empleo web app",
   "main": "bin/www",
   "scripts": {
     "dev": "nodemon --env-file=.env bin/www",
     "prod": "node --env-file=.env bin/www",
-    "build": "node --env-file=.env bin/www",
     "start": "node bin/www"
   },
   "engines": {
