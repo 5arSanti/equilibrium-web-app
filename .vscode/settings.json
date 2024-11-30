@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/111955e0-776a-4fc8-9db1-acffa4977098/resourceGroups/equilibrium-server/providers/Microsoft.Web/sites/equilibrium-server",
-    "appService.deploySubpath": "backend"
-}
