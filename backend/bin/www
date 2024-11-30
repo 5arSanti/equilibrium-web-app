@@ -11,5 +11,5 @@ serverApp.set('port', port);
 var server = http.createServer(serverApp);
 
 server.listen(port, () => {
-	console.log(`Server is running on port ${port}`);
+	console.log(`Server is running on port http://localhost:${port}`);
 });
