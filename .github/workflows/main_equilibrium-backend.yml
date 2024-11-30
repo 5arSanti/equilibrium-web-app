@@ -70,4 +70,7 @@ jobs:
           app-name: 'equilibrium-backend'
           slot-name: 'Production'
           package: .
+      
+      - name: Remove release.zip
+        run: rm release.zip
           
