@@ -68,7 +68,9 @@ router.post("/login", async (request, response) => {
 
 		response.cookie("authToken", token, {
 			httpOnly: true,
-			maxAge: 24 * 60 * 60 * 1000
+			maxAge: 24 * 60 * 60 * 1000,
+			sameSite: "lax",
+			secure: true
 		});
 
 		return response.json({ Status: "Success", message: "Sesión iniciada correctamente"});
