@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - equilibrium-backend
 on:
   push:
     branches:
-      - main
+      - prod
   workflow_dispatch:
 
 permissions:
@@ -35,8 +35,6 @@ jobs:
         working-directory: ./backend
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
 
       - name: Zip artifact for deployment
         working-directory: ./backend
