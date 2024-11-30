@@ -141,3 +141,4 @@ frontend\app.properties.env
 
 *.env
 *.ini
+*.sql

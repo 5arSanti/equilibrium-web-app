@@ -1,8 +1,3 @@
-CREATE DATABASE EQUILIBRIUM_DB;
-GO
-
-USE EQUILIBRIUM_DB;
-
 
 -- Tipos de Usuarios
 CREATE TABLE Tipo_Usuarios (
@@ -33,13 +28,13 @@ CREATE TABLE Usuarios (
 	Nombre VARCHAR(50) NOT NULL,
 	Apellidos VARCHAR(50) NOT NULL,
 	Correo VARCHAR(255) NOT NULL,
-	Contraseña TEXT NOT NULL,
+	ContraseÃ±a TEXT NOT NULL,
 	Imagen VARBINARY(MAX) NULL,
 	ID_Tipo_De_Usuario INT FOREIGN KEY REFERENCES Tipo_Usuarios(ID_Tipo_Usuarios) DEFAULT 2 NOT NULL,
 	ID_Genero INT FOREIGN KEY REFERENCES Generos(ID_Genero) NOT NULL
 )
 
-INSERT INTO Usuarios (Cedula_Usuario, Nombre, Apellidos, Correo, Contraseña, ID_Tipo_De_Usuario, ID_Genero) VALUES 
+INSERT INTO Usuarios (Cedula_Usuario, Nombre, Apellidos, Correo, ContraseÃ±a, ID_Tipo_De_Usuario, ID_Genero) VALUES 
 (1016947063, 'Johel Santiago', 'Arias Becerra', 'santiari05@hotmail.com', '$2b$10$pY5JINU8DNEU1DuLLPE/a.Arm9VipTccjKNeQ2S6n/sqPTrOaU68C', 1, 2)
 
 
@@ -172,9 +167,9 @@ CREATE TABLE Tipo_Noticia (
 INSERT INTO Tipo_Noticia VALUES 
 (1, 'Salud y Bienestar'),
 (2, 'Actividades y Eventos'),
-(3, 'Innovación y Tecnología'),
+(3, 'Innovaciï¿½n y Tecnologï¿½a'),
 (4, 'Comunidad y Voluntariado'),
-(5, 'Regulaciones y Políticas Públicas');
+(5, 'Regulaciones y Polï¿½ticas Pï¿½blicas');
 
 CREATE TABLE Noticias (
 	ID_Noticia INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
