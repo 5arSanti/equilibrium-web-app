@@ -9,6 +9,16 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
 jobs:
   back-build:
     runs-on: ubuntu-latest
@@ -75,6 +85,7 @@ jobs:
         run: rm release.zip
 
   front-deploy:
+    needs: back-deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
