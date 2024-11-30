@@ -4,10 +4,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const routerApi = require("./routes");
-const { handleErrors } = require("./middlewares/handleErrors");
 
 const app = express();
-const port = process.env.PORT || 3080;
 
 const whiteList = [
     // Local
@@ -22,18 +20,25 @@ const whiteList = [
 	"https://equilibrium-eges-n4uaajkdh-santiago-arias-projects.vercel.app",
 ];
 
+// const options = {
+// 	origin: function (origin, callback) {
+// 		if (whiteList.indexOf(origin) !== -1 || !origin) {
+// 		  	callback(null, true)
+// 		} else {
+// 		  	callback(new Error("Acceso denegado, CORS Error"));
+// 		}
+// 	},
+// 	methods: ["POST", "GET", "DELETE", "PATCH", "OPTIONS"],
+// 	credentials: true,
+// 	allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Credentials"]
+// }
 const options = {
-	origin: function (origin, callback) {
-		if (whiteList.indexOf(origin) !== -1 || !origin) {
-		  	callback(null, true)
-		} else {
-		  	callback(new Error("Acceso denegado, CORS Error"));
-		}
-	},
+	origin: true,
 	methods: ["POST", "GET", "DELETE", "PATCH", "OPTIONS"],
 	credentials: true,
 	allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Credentials"]
 }
+
 app.use(cors(options));
 
 app.options("*", cors(options));
@@ -43,15 +48,16 @@ app.use(cookieParser());
 
 
 app.get("/", (request, response) => {
-	console.log("Hola mundo desde mi servidor");
+	try {
 
-	return response.send("Hola mundo desde mi servidor");
+		return response.send("Hola mundo desde mi servidor");
+	}
+	catch (err) {
+		return response.send("Error en el servidor");
+	}
 })
 
 routerApi(app);
 
-app.use(handleErrors);
 
-app.listen(port, () => {
-    console.log("Escuchando en el puerto: " + port);
-})
+module.exports = app;
